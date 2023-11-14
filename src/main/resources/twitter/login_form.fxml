@@ -54,7 +54,7 @@
                <font>
                   <Font name="Pretendard Regular" size="13.0" />
                </font></Button>
-        <Button fx:id="loginButton" layoutX="125.0" layoutY="211.0" mnemonicParsing="false" text="로그인">
+        <Button fx:id="loginButton" layoutX="125.0" layoutY="211.0" mnemonicParsing="false" onAction="#switchToMainView" text="로그인">
                <font>
                   <Font name="Pretendard Regular" size="13.0" />
                </font></Button>

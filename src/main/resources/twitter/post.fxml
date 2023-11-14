@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="136.0" prefWidth="578.0" style="-fx-border-style: solid; -fx-border-width: 0 0 0.2px 0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="33.0" fitWidth="33.0" layoutX="6.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/default_profile.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="56.0" layoutY="11.0" prefHeight="18.0" prefWidth="82.0" text="username">
+         <font>
+            <Font name="Pretendard Regular" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="126.0" layoutY="11.0" prefHeight="18.0" prefWidth="82.0" text="\@username" textFill="#000000b7">
+         <font>
+            <Font name="Pretendard Regular" size="14.0" />
+         </font>
+      </Label>
+      <Text layoutX="56.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis est dui, tempor vitae neque eget, hendrerit accumsan metus. Nulla vitae efficitur quam. Aliquam ac leo nec enim malesuada aliquam ullamcorper non ipsum. Praesent nibh ex, tempus sit amet imperdiet quis, sagittis non risus. Sed nec tempus enim, sed rutrum ex." wrappingWidth="538.5139865875244">
+         <font>
+            <Font name="Pretendard Regular" size="14.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
