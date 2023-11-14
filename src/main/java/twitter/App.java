@@ -44,4 +44,12 @@ public class App extends Application {
         launch();
     }
 
+    public static void setWidth(int width) {
+        scene.getWindow().setWidth(width);
+    }
+
+    public static void setHeight(int height) {
+        scene.getWindow().setHeight(height);
+    }
+
 }

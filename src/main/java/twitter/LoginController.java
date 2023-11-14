@@ -11,4 +11,11 @@ public class LoginController {
         App.setRoot("register_form");
     }
 
+    @FXML
+    private void switchToMainView() throws IOException {
+        App.setWidth(800);
+        App.setHeight(600);
+        App.setRoot("main_view");
+    }
+
 }
