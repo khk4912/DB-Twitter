@@ -1,20 +1,21 @@
 package twitter;
 
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 import atlantafx.base.theme.PrimerLight;
+
+import twitter.utils.DB;
 
 /**
  * JavaFX App
  */
 public class App extends Application {
-
     private static Scene scene;
 
     @Override
@@ -22,6 +23,7 @@ public class App extends Application {
         scene = new Scene(loadFXML("login_form"), 400, 300);
         stage.setScene(scene);
         stage.show();
+
     }
 
     static void setRoot(String fxml) throws IOException {
@@ -34,9 +36,11 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+        // DB Initalize
+        DB.makeConnection("user", "mypassword", "twitter");
+
         Application.setUserAgentStylesheet(new PrimerLight().getUserAgentStylesheet());
-        // Application.setUserAgentStylesheet(new
-        // PrimerDark().getUserAgentStylesheet());
+
         launch();
     }
 
