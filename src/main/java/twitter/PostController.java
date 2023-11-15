@@ -28,9 +28,6 @@ public class PostController {
         this.handleLabel.setText(handle);
         this.contentText.setText(contentText);
 
-        this.userNameGridPane.setPrefWidth(username.length() * 10);
-        this.userHandleGridPane.setPrefWidth(handle.length() * 10);
-
     }
 
 }

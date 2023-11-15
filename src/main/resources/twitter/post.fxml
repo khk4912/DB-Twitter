@@ -23,21 +23,24 @@
             <Font name="Pretendard Regular" size="14.0" />
          </font>
       </Text>
-      <GridPane fx:id="userInfoGridPane" layoutX="116.0" layoutY="17.0" prefHeight="15.0" prefWidth="230.0">
+      <GridPane fx:id="userInfoGridPane" layoutX="116.0" layoutY="17.0" maxHeight="-Infinity" prefHeight="15.0">
         <columnConstraints>
-          <ColumnConstraints fx:id="userNameGridPane" fillWidth="false" />
-          <ColumnConstraints fx:id="userHandleGridPane" hgrow="SOMETIMES" minWidth="-Infinity" />
+          <ColumnConstraints fx:id="userNameGridPane" fillWidth="false" hgrow="NEVER" />
+          <ColumnConstraints fx:id="userHandleGridPane" fillWidth="false" hgrow="NEVER" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="usernameLabel" prefHeight="17.0" prefWidth="66.0" text="username">
+            <Label fx:id="usernameLabel" text="username">
                <font>
                   <Font name="Pretendard Regular" size="13.0" />
                </font>
+               <GridPane.margin>
+                  <Insets right="10.0" />
+               </GridPane.margin>
             </Label>
-            <Label fx:id="handleLabel" prefHeight="18.0" prefWidth="82.0" text="\@username" textFill="#000000b7" GridPane.columnIndex="1">
+            <Label fx:id="handleLabel" prefHeight="18.0" text="\@username" textFill="#000000b7" GridPane.columnIndex="1">
                <font>
                   <Font name="Pretendard Regular" size="13.0" />
                </font>
