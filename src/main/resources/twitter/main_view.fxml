@@ -34,6 +34,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
@@ -42,24 +43,20 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21"
-   xmlns:fx="http://javafx.com/fxml/1" fx:controller="twitter.MainViewController">
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="twitter.MainViewController">
    <children>
-      <SplitPane dividerPositions="0.11414253897550111" minWidth="-Infinity" prefWidth="100.0"
-         VBox.vgrow="ALWAYS">
+      <SplitPane fx:id="splitPane" dividerPositions="0.11414253897550111" minWidth="-Infinity" prefWidth="100.0" VBox.vgrow="ALWAYS">
          <items>
-            <AnchorPane maxWidth="-Infinity" prefHeight="598.0" prefWidth="0.0"
-               SplitPane.resizableWithParent="false">
+            <AnchorPane maxWidth="-Infinity" prefHeight="598.0" prefWidth="0.0" SplitPane.resizableWithParent="false">
                <children>
-                  <ImageView fitHeight="60.0" fitWidth="49.0" layoutX="6.0" layoutY="11.0"
-                     pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="60.0" fitWidth="49.0" layoutX="6.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@assets/twitter_png.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="homeIcon" fitHeight="28.0" fitWidth="25.0" layoutX="18.0"
-                     layoutY="83.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="homeIcon" fitHeight="28.0" fitWidth="25.0" layoutX="18.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@assets/home.png" />
                      </image>
@@ -67,8 +64,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fx:id="bookmarkIcon" fitHeight="33.0" fitWidth="25.0" layoutX="18.0"
-                     layoutY="136.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="bookmarkIcon" fitHeight="33.0" fitWidth="25.0" layoutX="18.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@assets/bookmark.png" />
                      </image>
@@ -78,16 +74,14 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <ScrollPane fx:id="postScrollPane" prefHeight="-1.0" prefWidth="-1.0">
+            <ScrollPane fx:id="postScrollPane" maxWidth="1.7976931348623157E308" prefHeight="-1.0" prefWidth="-1.0">
                <content>
-                  <AnchorPane id="Content" fx:id="postPane" minHeight="-1.0" minWidth="-1.0"
-                     onScrollFinished="#scrollFinished" prefHeight="599.0" prefWidth="791.0">
+                  <AnchorPane id="Content" fx:id="postPane" minHeight="-1.0" minWidth="-1.0" onScrollFinished="#scrollFinished">
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
                      <children>
-                        <GridPane fx:id="postGridPane" layoutX="15.0" layoutY="30.0"
-                           AnchorPane.topAnchor="50.0">
+                        <GridPane fx:id="postGridPane" layoutX="15.0" layoutY="30.0" AnchorPane.topAnchor="60.0">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" />
                            </columnConstraints>
@@ -95,6 +89,11 @@
                               <Insets />
                            </opaqueInsets>
                         </GridPane>
+                        <Label layoutX="26.0" layoutY="18.0" text="트윗">
+                           <font>
+                              <Font name="Pretendard Black" size="24.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                </content>
