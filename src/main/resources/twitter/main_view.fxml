@@ -81,7 +81,7 @@
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
                      <children>
-                        <GridPane fx:id="postGridPane" layoutX="15.0" layoutY="30.0" AnchorPane.topAnchor="60.0">
+                        <GridPane fx:id="postGridPane" layoutX="15.0" layoutY="30.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="60.0">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" />
                            </columnConstraints>
