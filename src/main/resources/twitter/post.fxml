@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -74,6 +75,9 @@
                      <image>
                         <Image url="@assets/like.png" />
                      </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </ImageView>
                   <Label fx:id="likeCount" text="0" textFill="#515151" GridPane.columnIndex="1">
                      <GridPane.margin>
@@ -82,11 +86,17 @@
                      <font>
                         <Font name="Pretendard Regular" size="13.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Label>
                   <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
                      <image>
                         <Image url="@assets/retweet.png" />
                      </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </ImageView>
                   <Label fx:id="retweetCount" text="0" textFill="#515151" GridPane.columnIndex="3">
                      <font>
@@ -95,11 +105,17 @@
                      <GridPane.margin>
                         <Insets left="5.0" />
                      </GridPane.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Label>
                   <ImageView fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4">
                      <image>
                         <Image url="@assets/comment.png" />
                      </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </ImageView>
                   <Label fx:id="commentCount" text="0" textFill="#515151" GridPane.columnIndex="5">
                      <font>
@@ -108,6 +124,9 @@
                      <GridPane.margin>
                         <Insets left="5.0" />
                      </GridPane.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Label>
                </children>
             </GridPane>
