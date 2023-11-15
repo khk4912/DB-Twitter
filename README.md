@@ -4,4 +4,4 @@
 
 ### Main
 
-<img alt="Main Screen" src="https://github.com/khk4912/DB-Twitter/assets/30457148/05061246-3899-4b74-81a5-955af0a8525d">
+<img alt="Main Screen" src="https://github.com/khk4912/DB-Twitter/assets/30457148/e5d70787-ac3a-4d25-9092-d0e28d3e47bb">
