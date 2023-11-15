@@ -18,6 +18,7 @@ public class MainViewController {
     public void initialize() {
 
         addPost("Demo", "@Demo", "This is a demo!", 1, 10, 100);
+        addPost("Demo", "@Demo", "A quick brown fox jumps over the lazy dog.", 3, 10, 100);
 
         addPost("Demo2", "@random",
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ac interdum nisl. Maecenas rhoncus rhoncus libero, ac lacinia nibh elementum nec. Donec tempus, lacus id porta cursus, erat lectus condimentum tortor, sed tincidunt dui est a erat. Nunc vel tellus eget mi gravida lacinia tincidunt ut nibh. Nam vitae enim in elit consequat pretium. Suspendisse porttitor nisi quis massa egestas commodo. Integer ultricies vel massa a iaculis. Donec porta, diam ac tincidunt malesuada, ipsum eros consequat sapien, pretium pharetra mi risus vitae tellus. Aliquam varius at eros vel luctus.");
