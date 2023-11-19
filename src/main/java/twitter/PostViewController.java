@@ -16,6 +16,7 @@ public class PostViewController {
     private ScrollPane postScrollPane;
 
     public void initalize(ScrollPane postScrollPane) {
+
         this.postScrollPane = postScrollPane;
 
     }
@@ -48,7 +49,7 @@ public class PostViewController {
     private void scrollFinished() {
 
         double scrollHeight = postScrollPane.getVvalue();
-        System.out.println(scrollHeight);
+
         if (scrollHeight > 0.85) {
             // TODO: Add more posts!
 
