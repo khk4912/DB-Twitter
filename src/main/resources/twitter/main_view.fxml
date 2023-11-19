@@ -66,7 +66,7 @@
                         <RowConstraints vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <ImageView fx:id="homeIcon" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                        <ImageView fx:id="homeIcon" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#loadPostView" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
                            <image>
                               <Image url="@assets/home.png" />
                            </image>
@@ -88,7 +88,7 @@
                               <Insets bottom="30.0" />
                            </GridPane.margin>
                         </ImageView>
-                        <ImageView fx:id="homeIcon1" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <ImageView fx:id="homeIcon1" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#loadWritePostView" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <image>
                               <Image url="@assets/write_post.png" />
                            </image>

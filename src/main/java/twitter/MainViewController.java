@@ -20,6 +20,7 @@ public class MainViewController {
      * Load PostView
      * 게시글 리스트를 보여주는 화면을 postScrollPane에 로드
      */
+    @FXML
     private void loadPostView() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("post_view.fxml"));
@@ -41,6 +42,21 @@ public class MainViewController {
             return;
         }
 
+    }
+
+    @FXML
+    private void loadWritePostView() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("write.fxml"));
+
+            AnchorPane writePostView = fxmlLoader.load();
+            // WritePostController writePostController = fxmlLoader.getController();
+
+            postScrollPane.setContent(writePostView);
+        } catch (IOException e) {
+            System.out.println("Error loading write_post.fxml" + e.getCause() + e.getMessage());
+            return;
+        }
     }
 
     public void initialize() {
