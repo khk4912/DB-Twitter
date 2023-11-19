@@ -16,9 +16,12 @@ public class MainViewController {
     @FXML
     private ScrollPane postScrollPane;
 
-    public void initialize() {
+    /**
+     * Load PostView
+     * 게시글 리스트를 보여주는 화면을 postScrollPane에 로드
+     */
+    private void loadPostView() {
         try {
-            // 처음 실행 시 post view 불러오기
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("post_view.fxml"));
 
             AnchorPane postView = fxmlLoader.load();
@@ -38,6 +41,11 @@ public class MainViewController {
             return;
         }
 
+    }
+
+    public void initialize() {
+        // 기본값은 PostView로 설정
+        loadPostView();
     }
 
 }
