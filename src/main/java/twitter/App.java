@@ -8,6 +8,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import atlantafx.base.theme.PrimerLight;
+
 import twitter.utils.DB;
 
 /**
@@ -18,7 +20,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        Application.setUserAgentStylesheet(App.class.getResource("primer-light.css").toString());
+        Application.setUserAgentStylesheet(new PrimerLight().getUserAgentStylesheet());
 
         scene = new Scene(loadFXML("login_form"), 400, 300);
         stage.setScene(scene);
