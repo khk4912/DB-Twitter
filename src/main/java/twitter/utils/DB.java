@@ -15,6 +15,13 @@ public class DB {
      * @param DBName   DB 이름
      */
     public static boolean makeConnection(String userName, String password, String DBName) {
+        // try {
+        // Class.forName("com.mysql.cj.jdbc.Driver");
+        // } catch (ClassNotFoundException e) {
+        // System.out.println("makeConnection(): " + e.getMessage());
+        // return false;
+        // }
+
         String url = "jdbc:mysql://localhost:3306/" + DBName;
         try {
             con = DriverManager.getConnection(url, userName, password);
