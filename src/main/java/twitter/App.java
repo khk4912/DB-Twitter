@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import atlantafx.base.theme.PrimerLight;
@@ -21,8 +22,12 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Application.setUserAgentStylesheet(new PrimerLight().getUserAgentStylesheet());
+        Font.loadFont(App.class.getResourceAsStream("assets/Pretendard-Regular.ttf").toString(), 10);
+        Font.loadFont(App.class.getResourceAsStream("assets/Pretendard-Black.ttf").toString(), 10);
 
         scene = new Scene(loadFXML("login_form"), 400, 300);
+
+        stage.setTitle("Twitter");
         stage.setScene(scene);
         stage.show();
 
@@ -41,7 +46,6 @@ public class App extends Application {
         // DB Initalize
 
         DB.makeConnection("user", "mypassword", "twitter");
-
         launch();
     }
 
