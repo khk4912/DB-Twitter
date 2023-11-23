@@ -28,6 +28,15 @@ public class PostPopupMenuController {
             editTweet.setVisible(false);
         }
 
+        blockImage.setFitWidth(10);
+        blockImage.setFitHeight(10);
+
+        deleteImage.setFitWidth(10);
+        deleteImage.setFitHeight(10);
+
+        editImage.setFitWidth(10);
+        editImage.setFitHeight(10);
+
         blockUser.setGraphic(blockImage);
         deleteTweet.setGraphic(deleteImage);
         editTweet.setGraphic(editImage);
