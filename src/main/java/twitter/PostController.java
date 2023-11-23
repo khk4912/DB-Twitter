@@ -58,8 +58,11 @@ public class PostController {
         try {
 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("post_popup_menu.fxml"));
-
             ContextMenu contextMenu = fxmlLoader.load();
+            PostPopupMenuController postPopupMenuController = fxmlLoader.getController();
+
+            // TODO: change isMyPost
+            postPopupMenuController.initlaize(true);
             contextMenu.show(menuIcon, X, Y);
 
         } catch (IOException e) {
@@ -69,12 +72,12 @@ public class PostController {
     }
 
     @FXML
-    private void showPostPopupMenu(ContextMenuEvent event) {
+    private void showPostPopupMenuRequested(ContextMenuEvent event) {
         showPopup(event.getScreenX(), event.getScreenY());
     }
 
     @FXML
-    private void showPostPopupMenu(MouseEvent event) {
+    private void showPostPopupMenuClicked(MouseEvent event) {
         showPopup(event.getScreenX(), event.getScreenY());
     }
 }

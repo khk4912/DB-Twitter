@@ -16,9 +16,7 @@ public class PostViewController {
     private ScrollPane postScrollPane;
 
     public void initalize(ScrollPane postScrollPane) {
-
         this.postScrollPane = postScrollPane;
-
     }
 
     public void addPost(String username, String handle, String contentText) {

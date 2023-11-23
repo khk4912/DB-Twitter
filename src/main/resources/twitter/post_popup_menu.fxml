@@ -3,10 +3,11 @@
 <?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.MenuItem?>
 
-<ContextMenu xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<ContextMenu xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="twitter.PostPopupMenuController">
    <items>
-      <MenuItem mnemonicParsing="false" text="글 삭제하기" />
-      <MenuItem mnemonicParsing="false" text="유저 차단하기" />
+      <MenuItem fx:id="blockUser" mnemonicParsing="false" text="유저 차단하기" />
+      <MenuItem fx:id="deleteTweet" mnemonicParsing="false" text="트윗 삭제하기" />
+      <MenuItem fx:id="editTweet" mnemonicParsing="false" text="트윗 수정하기" />
 
 
    </items>
