@@ -66,6 +66,7 @@
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="80.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="80.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="80.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -132,6 +133,11 @@
             </GridPane>
          </children>
       </GridPane>
+      <ImageView fx:id="menuIcon" fitHeight="15.0" fitWidth="51.0" layoutX="633.0" layoutY="14.0" onContextMenuRequested="#showPostPopupMenu" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="670.0">
+         <image>
+            <Image url="@assets/menu.png" />
+         </image>
+      </ImageView>
    </children>
    <padding>
       <Insets bottom="10.0" />

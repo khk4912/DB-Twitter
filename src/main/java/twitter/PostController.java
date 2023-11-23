@@ -1,9 +1,15 @@
 package twitter;
 
+import java.io.IOException;
+
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.text.Text;
 import javafx.scene.control.Label;
 import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.image.ImageView;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.input.ContextMenuEvent;
 
 public class PostController {
 
@@ -26,6 +32,9 @@ public class PostController {
     Text contentText;
 
     @FXML
+    ImageView menuIcon;
+
+    @FXML
     ColumnConstraints userNameGridPane;
 
     @FXML
@@ -44,4 +53,19 @@ public class PostController {
 
     }
 
+    @FXML
+    private void showPostPopupMenu(ContextMenuEvent event) {
+        try {
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("post_popup_menu.fxml"));
+
+            ContextMenu contextMenu = fxmlLoader.load();
+            contextMenu.show(menuIcon, event.getScreenX(), event.getScreenY());
+
+        } catch (IOException e) {
+            System.out.println("Error loading post_popup_menu.fxml");
+            System.out.println(e.getMessage());
+        }
+
+    }
 }
