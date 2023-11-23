@@ -10,6 +10,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.input.ContextMenuEvent;
+import javafx.scene.input.MouseEvent;
 
 public class PostController {
 
@@ -53,19 +54,27 @@ public class PostController {
 
     }
 
-    @FXML
-    private void showPostPopupMenu(ContextMenuEvent event) {
+    private void showPopup(double X, double Y) {
         try {
 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("post_popup_menu.fxml"));
 
             ContextMenu contextMenu = fxmlLoader.load();
-            contextMenu.show(menuIcon, event.getScreenX(), event.getScreenY());
+            contextMenu.show(menuIcon, X, Y);
 
         } catch (IOException e) {
             System.out.println("Error loading post_popup_menu.fxml");
             System.out.println(e.getMessage());
         }
+    }
 
+    @FXML
+    private void showPostPopupMenu(ContextMenuEvent event) {
+        showPopup(event.getScreenX(), event.getScreenY());
+    }
+
+    @FXML
+    private void showPostPopupMenu(MouseEvent event) {
+        showPopup(event.getScreenX(), event.getScreenY());
     }
 }
