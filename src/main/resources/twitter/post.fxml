@@ -133,10 +133,13 @@
             </GridPane>
          </children>
       </GridPane>
-      <ImageView fx:id="menuIcon" fitHeight="15.0" fitWidth="51.0" layoutX="633.0" layoutY="14.0" onContextMenuRequested="#showPostPopupMenu" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="670.0">
+      <ImageView fx:id="menuIcon" fitHeight="15.0" fitWidth="51.0" layoutX="633.0" layoutY="14.0" onContextMenuRequested="#showPostPopupMenu" onMouseClicked="#showPostPopupMenu" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="670.0">
          <image>
             <Image url="@assets/menu.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
    </children>
    <padding>
