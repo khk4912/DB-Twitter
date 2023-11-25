@@ -26,8 +26,14 @@ public class MainViewController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("post_view.fxml"));
 
             AnchorPane postView = fxmlLoader.load();
+
             PostViewController postViewController = fxmlLoader.getController();
             postViewController.initalize(postScrollPane);
+
+            // Demo retweet posts
+            postViewController.addRetweetPost("나", "@kosame___", "돈까스 ㄱㄱ ", "너", "@you", "점심 뭐 먹지?", 13, 1, 8);
+
+            postViewController.addRetweetPost("나", "@kosame___", "", "너", "@you", "리트윗 하면 복이 와요", 13, 1, 8);
 
             // Demo posts
             postViewController.addPost("Demo", "@Demo", "This is a demo!", 1, 10, 100);

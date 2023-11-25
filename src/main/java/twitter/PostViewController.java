@@ -42,6 +42,31 @@ public class PostViewController {
 
     }
 
+    public void addRetweetPost(String username, String handle, String contentText, String retweetUsername,
+            String retweetHandle, String retweetContentText) {
+        addRetweetPost(username, handle, contentText, retweetUsername, retweetHandle, retweetContentText, 0, 0, 0);
+    }
+
+    public void addRetweetPost(String username, String handle, String contentText, String retweetUsername,
+            String retweetHandle, String retweetContentText, int likeCnt, int retweetCnt, int replyCnt) {
+        try {
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("retweet_post.fxml"));
+
+            AnchorPane post = fxmlLoader.load();
+            RetweetPostController retweetPostController = fxmlLoader.getController();
+
+            retweetPostController.initlaizePost(username, handle, contentText, likeCnt, retweetCnt, replyCnt,
+                    retweetUsername, retweetHandle, retweetContentText);
+            postGridPane.addRow(postGridPane.getRowCount(), post);
+
+        } catch (IOException e) {
+            System.out.println("Error loading retweet_post.fxml");
+            System.out.println(e.getMessage());
+        }
+
+    }
+
     // Scroll이 거의 다 되었으면, Vvalue 확인하여 새로운 post 삽입
     @FXML
     private void scrollFinished() {
