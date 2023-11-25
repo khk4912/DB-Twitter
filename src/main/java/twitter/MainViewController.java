@@ -45,6 +45,31 @@ public class MainViewController {
     }
 
     @FXML
+    private void loadBookmarkView() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("bookmark_view.fxml"));
+            AnchorPane bookmarkView = fxmlLoader.load();
+
+            PostViewController postViewController = fxmlLoader.getController();
+            postViewController.initalize(postScrollPane);
+
+            postViewController.addPost("나", "@me", "북마크 테스트", 9999, 1, 8);
+            postViewController.addPost("나", "@me", "북마크 테스트2", 1234132, 1, 8);
+            postViewController.addPost("나", "@me", "북마크 테스트3", 13, 1, 8);
+            postViewController.addPost("나", "@me", "북마크 테스트4", 13, 1, 8);
+            postViewController.addPost("나", "@me", "북마크 테스트5", 13, 1, 8);
+            postViewController.addPost("나", "@me", "북마크 테스트5", 13, 1, 8);
+            postViewController.addPost("나", "@me", "북마크 테스트5", 13, 1, 8);
+
+            postScrollPane.setContent(bookmarkView);
+
+        } catch (IOException e) {
+            System.out.println("Error loading bookmark_view.fxml" + e.getCause() + e.getMessage());
+            return;
+        }
+    }
+
+    @FXML
     private void loadWritePostView() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("write.fxml"));

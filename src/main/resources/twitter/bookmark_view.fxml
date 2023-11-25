@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="Content" fx:id="postPane" minHeight="-1.0" minWidth="-1.0" onScrollFinished="#scrollFinished" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="twitter.PostViewController">
+   <cursor>
+      <Cursor fx:constant="DEFAULT" />
+   </cursor>
+   <children>
+      <GridPane fx:id="postGridPane" layoutX="15.0" layoutY="30.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="60.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" />
+         </columnConstraints>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </GridPane>
+      <Label layoutX="26.0" layoutY="18.0" text="북마크">
+         <font>
+            <Font name="Pretendard Black" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

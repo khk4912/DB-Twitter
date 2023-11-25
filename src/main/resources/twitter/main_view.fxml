@@ -77,7 +77,7 @@
                               <Insets bottom="30.0" />
                            </GridPane.margin>
                         </ImageView>
-                        <ImageView fx:id="bookmarkIcon" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <ImageView fx:id="bookmarkIcon" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#loadBookmarkView" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <image>
                               <Image url="@assets/bookmark.png" />
                            </image>
