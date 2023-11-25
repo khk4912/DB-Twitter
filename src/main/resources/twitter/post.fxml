@@ -30,7 +30,7 @@
          <children>
             <Label fx:id="usernameLabel" text="username">
                <font>
-                  <Font name="Pretendard Regular" size="13.0" />
+                  <Font name="Pretendard Bold" size="13.0" />
                </font>
                <GridPane.margin>
                   <Insets right="10.0" />
