@@ -1,4 +1,5 @@
-package team;
+package twitter.db;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -30,7 +31,7 @@ public class LoginHandler {
 
             if (rs.next()) {
                 System.out.println("Logged in!!");
-                
+
             } else {
                 System.out.println("Wrong ID/password. Please log in again.");
             }
@@ -38,7 +39,7 @@ public class LoginHandler {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
     }
-    
+
 }

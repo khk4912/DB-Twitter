@@ -1,4 +1,4 @@
-package team;
+package twitter.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,12 +27,14 @@ public class CommentLikeManager {
             String cl_id = sc.next();
             String commentid = sc.next();
 
-            String s3 = "select user_id_liker from comment_like where user_id_liker='" + user_id + "' and comment_id='" + commentid + "'";
+            String s3 = "select user_id_liker from comment_like where user_id_liker='" + user_id + "' and comment_id='"
+                    + commentid + "'";
             stmt = con.createStatement();
             rs = stmt.executeQuery(s3);
 
             if (rs.next()) {
-                s3 = "delete from comment_like where user_id_liker='" + user_id + "' and comment_id='" + commentid + "'";
+                s3 = "delete from comment_like where user_id_liker='" + user_id + "' and comment_id='" + commentid
+                        + "'";
                 String s4 = "update comment set num_of_likes=num_of_likes-1 where comment_id='" + commentid + "'";
                 pstm = con.prepareStatement(s3);
                 pstm.executeUpdate();

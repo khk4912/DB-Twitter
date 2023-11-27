@@ -1,4 +1,4 @@
-package team;
+package twitter.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,13 +23,14 @@ public class ChildCommentManager {
             String ccm_id = sc.next();
             int postid = sc.nextInt();
             String comment_id = sc.next();
-            sc.nextLine();  // consume the newline character
+            sc.nextLine(); // consume the newline character
 
             System.out.println("Enter text");
             String content = sc.nextLine();
 
             String s5 = "insert into child_comment(child_cmt_id, user_id_writter, post_id, comment_id, content) " +
-                    "values('" + ccm_id + "','" + user_id + "','" + postid + "','" + comment_id + "','" + content + "')";
+                    "values('" + ccm_id + "','" + user_id + "','" + postid + "','" + comment_id + "','" + content
+                    + "')";
 
             pstm = con.prepareStatement(s5);
             pstm.executeUpdate();
@@ -40,4 +41,3 @@ public class ChildCommentManager {
         }
     }
 }
-

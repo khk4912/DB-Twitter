@@ -1,4 +1,4 @@
-package team;
+package twitter.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -34,7 +34,8 @@ public class ChildCommentLikeManager {
 
             if (rs.next()) {
                 String deleteQuery = "delete from child_comment_like where user_id_liker=\"" + user_id + "\"";
-                String updateQuery = "update child_comment set ccm_like=ccm_like-1 where child_cmt_id=\'" + ccmt_id + "\'";
+                String updateQuery = "update child_comment set ccm_like=ccm_like-1 where child_cmt_id=\'" + ccmt_id
+                        + "\'";
 
                 pstm = con.prepareStatement(deleteQuery);
                 pstm.executeUpdate();
@@ -43,8 +44,10 @@ public class ChildCommentLikeManager {
 
                 System.out.println("You unliked the child comment!");
             } else {
-                String insertQuery = "insert into child_comment_like values('" + ccl_id + "','" + user_id + "','" + ccmt_id + "')";
-                String updateQuery = "update child_comment set ccm_like=ccm_like+1 where child_cmt_id=\'" + ccmt_id + "\'";
+                String insertQuery = "insert into child_comment_like values('" + ccl_id + "','" + user_id + "','"
+                        + ccmt_id + "')";
+                String updateQuery = "update child_comment set ccm_like=ccm_like+1 where child_cmt_id=\'" + ccmt_id
+                        + "\'";
 
                 pstm = con.prepareStatement(insertQuery);
                 pstm.executeUpdate();
@@ -58,4 +61,3 @@ public class ChildCommentLikeManager {
         }
     }
 }
-

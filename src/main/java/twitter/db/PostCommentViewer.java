@@ -1,4 +1,4 @@
-package team;
+package twitter.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -54,7 +54,7 @@ public class PostCommentViewer {
                     int userId = rs.getInt("user_id_writer");
                     String content = rs.getString("content");
                     String updateDate = rs.getString("update_date");
-                    int ccm_like=rs.getInt("ccm_like");
+                    int ccm_like = rs.getInt("ccm_like");
                     System.out.printf("%d %d %s %s\n", childCommentId, userId, content, updateDate);
                 }
             }
@@ -63,4 +63,3 @@ public class PostCommentViewer {
 
     // Add other methods if necessary
 }
-

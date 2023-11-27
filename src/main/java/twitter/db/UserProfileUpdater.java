@@ -1,4 +1,4 @@
-package team;
+package twitter.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -34,7 +34,8 @@ public class UserProfileUpdater {
             String first = sc.nextLine();
             System.out.println("enter last name");
             String last = sc.nextLine();
-            s12 = "update user set first_name=\'" + first + "\',second_name=\'" + last + "\' where user_id=\'" + user_id + "\'";
+            s12 = "update user set first_name=\'" + first + "\',second_name=\'" + last + "\' where user_id=\'" + user_id
+                    + "\'";
             pstm = con.prepareStatement(s12);
             pstm.executeUpdate();
         } else if (op5 == 2) {
@@ -65,4 +66,3 @@ public class UserProfileUpdater {
         }
     }
 }
-
