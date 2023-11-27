@@ -1,3 +1,5 @@
+package twitter.db;
+
 import java.sql.*;
 
 public class Retweet {
