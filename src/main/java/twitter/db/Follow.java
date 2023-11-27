@@ -1,3 +1,5 @@
+package twitter.db;
+
 import java.sql.*;
 
 public class Follow {
@@ -11,21 +13,21 @@ public class Follow {
         try {
             String checkSql = "SELECT * FROM follower WHERE follow_id = ? AND follower_id = ?";
             PreparedStatement checkPstmt = con.prepareStatement(checkSql);
-            checkPstmt.setString(1, followID); // ÆÈ·Î¿ì ÇÏ´Â »ç¶÷
-            checkPstmt.setString(2, followerID); // ÆÈ·Î¿ì ¹Þ´Â »ç¶÷
+            checkPstmt.setString(1, followID); // ï¿½È·Î¿ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½
+            checkPstmt.setString(2, followerID); // ï¿½È·Î¿ï¿½ ï¿½Þ´ï¿½ ï¿½ï¿½ï¿½
             ResultSet rs = checkPstmt.executeQuery();
 
             if (!rs.next()) {
                 String insertSql = "INSERT INTO follower VALUES (?, ?)";
                 PreparedStatement insertPstmt = con.prepareStatement(insertSql);
-                insertPstmt.setString(1, followID); // ÆÈ·Î¿ì ÇÏ´Â »ç¶÷
-                insertPstmt.setString(2, followerID); // ÆÈ·Î¿ì ¹Þ´Â »ç¶÷
+                insertPstmt.setString(1, followID); // ï¿½È·Î¿ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½
+                insertPstmt.setString(2, followerID); // ï¿½È·Î¿ï¿½ ï¿½Þ´ï¿½ ï¿½ï¿½ï¿½
                 insertPstmt.executeUpdate();
 
                 String insertSql2 = "INSERT INTO following VALUES (?, ?)";
                 PreparedStatement insertPstmt2 = con.prepareStatement(insertSql2);
-                insertPstmt2.setString(1, followerID); // ÆÈ·Î¿ì ¹Þ´Â »ç¶÷
-                insertPstmt2.setString(2, followID); // ÆÈ·Î¿ì ÇÏ´Â »ç¶÷
+                insertPstmt2.setString(1, followerID); // ï¿½È·Î¿ï¿½ ï¿½Þ´ï¿½ ï¿½ï¿½ï¿½
+                insertPstmt2.setString(2, followID); // ï¿½È·Î¿ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½
                 insertPstmt2.executeUpdate();
 
                 System.out.println(followID + " is now follow " + followerID);
@@ -38,7 +40,6 @@ public class Follow {
         }
     }
 
-
     private void unfollow(String followID, String followerID) {
         try {
             String deleteSql = "DELETE FROM follower WHERE follow_id = ? AND follower_id = ?";
@@ -46,7 +47,7 @@ public class Follow {
             deletePstmt.setString(1, followID);
             deletePstmt.setString(2, followerID);
             deletePstmt.executeUpdate();
-            
+
             String deleteSql_2 = "DELETE FROM following WHERE follow_id = ? AND following_id = ?";
             deletePstmt = con.prepareStatement(deleteSql_2);
             deletePstmt.setString(1, followerID);
