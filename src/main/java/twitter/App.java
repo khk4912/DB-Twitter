@@ -18,9 +18,14 @@ import twitter.db.DB;
  */
 public class App extends Application {
     private static Scene scene;
+    public DB DB;
 
     @Override
     public void start(Stage stage) throws IOException {
+        // DB Initalize
+        DB = new DB();
+        DB.makeConnection("user", "mypassword", "twitter");
+
         Application.setUserAgentStylesheet(new PrimerLight().getUserAgentStylesheet());
         Font.loadFont(App.class.getResourceAsStream("assets/Pretendard-Regular.ttf").toString(), 10);
         Font.loadFont(App.class.getResourceAsStream("assets/Pretendard-Black.ttf").toString(), 10);
@@ -43,9 +48,7 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        // DB Initalize
 
-        DB.makeConnection("user", "mypassword", "twitter");
         launch();
     }
 

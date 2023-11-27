@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DB {
-    private static Connection con;
+    private Connection con;
 
     /**
      * Connection을 만들어 static 변수 con에 대입.
@@ -14,7 +14,7 @@ public class DB {
      * @param password 비밀번호
      * @param DBName   DB 이름
      */
-    public static boolean makeConnection(String userName, String password, String DBName) {
+    public Connection makeConnection(String userName, String password, String DBName) {
         // try {
         // Class.forName("com.mysql.cj.jdbc.Driver");
         // } catch (ClassNotFoundException e) {
@@ -25,14 +25,14 @@ public class DB {
         String url = "jdbc:mysql://localhost:3306/" + DBName;
         try {
             con = DriverManager.getConnection(url, userName, password);
-            return true;
+            return con;
         } catch (SQLException e) {
             System.out.println("makeConnection(): " + e.getMessage());
-            return false;
+            return null;
         }
     }
 
-    public static void closeConnection() {
+    public void closeConnection() {
         try {
             con.close();
         } catch (SQLException e) {
@@ -40,7 +40,7 @@ public class DB {
         }
     }
 
-    public static Connection getConnection() {
+    public Connection getConnection() {
         if (con == null)
             System.out.println("Connection is not set yet!");
 
