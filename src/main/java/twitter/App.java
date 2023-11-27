@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 import atlantafx.base.theme.PrimerLight;
 
-import twitter.utils.DB;
+import twitter.db.DB;
 
 /**
  * JavaFX App
