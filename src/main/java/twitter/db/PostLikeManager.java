@@ -1,4 +1,4 @@
-package team;
+package twitter.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -36,7 +36,8 @@ public class PostLikeManager {
 
             System.out.println(pl_id + " " + postid);
 
-            s3 = "select user_id_liker from post_like where user_id_liker=\"" + user_id + "\" and post_id=\"" + postid + "\"";
+            s3 = "select user_id_liker from post_like where user_id_liker=\"" + user_id + "\" and post_id=\"" + postid
+                    + "\"";
             rs = stmt.executeQuery(s3);
 
             if (rs.next()) {
@@ -59,4 +60,3 @@ public class PostLikeManager {
         }
     }
 }
-

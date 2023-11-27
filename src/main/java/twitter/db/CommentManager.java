@@ -1,4 +1,4 @@
-package team;
+package twitter.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,7 +27,8 @@ public class CommentManager {
             System.out.println("Enter text");
             String content = sc.nextLine();
 
-            String s5 = "insert into comment(comment_id, user_id_writer, post_id, content) values('" + comment_id + "', '" + user_id + "', '" + postid + "', '" + content + "')";
+            String s5 = "insert into comment(comment_id, user_id_writer, post_id, content) values('" + comment_id
+                    + "', '" + user_id + "', '" + postid + "', '" + content + "')";
             pstm = con.prepareStatement(s5);
             pstm.executeUpdate();
 
@@ -37,4 +38,3 @@ public class CommentManager {
         }
     }
 }
-
