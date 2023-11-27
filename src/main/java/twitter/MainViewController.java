@@ -90,6 +90,22 @@ public class MainViewController {
         }
     }
 
+    @FXML
+    private void loadSearchView() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("search_view.fxml"));
+
+            AnchorPane searchView = fxmlLoader.load();
+            // WritePostController writePostController = fxmlLoader.getController();
+
+            postScrollPane.setContent(searchView);
+        } catch (IOException e) {
+            System.out.println("Error loading search_view.fxml" + e.getCause() + e.getMessage());
+            return;
+        }
+
+    }
+
     public void initialize() {
         // 기본값은 PostView로 설정
         loadPostView();
