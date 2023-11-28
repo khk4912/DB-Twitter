@@ -22,7 +22,7 @@ public class PostPopupMenuController {
     MenuItem editTweet;
 
     // TODO: Implement ID Chedck, by adding getID in App class
-    public void initlaize(boolean isMyPost) {
+    public void initialize(boolean isMyPost) {
         if (!isMyPost) {
             deleteTweet.setVisible(false);
             editTweet.setVisible(false);

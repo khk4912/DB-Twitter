@@ -28,7 +28,7 @@ public class MainViewController {
             AnchorPane postView = fxmlLoader.load();
 
             PostViewController postViewController = fxmlLoader.getController();
-            postViewController.initalize(postScrollPane);
+            postViewController.initScrollPane(postScrollPane);
 
             // Demo retweet posts
             postViewController.addRetweetPost("나", "@kosame___", "돈까스 ㄱㄱ ", "너", "@you", "점심 뭐 먹지?", 13, 1, 8);
@@ -57,7 +57,7 @@ public class MainViewController {
             AnchorPane bookmarkView = fxmlLoader.load();
 
             PostViewController postViewController = fxmlLoader.getController();
-            postViewController.initalize(postScrollPane);
+            postViewController.initScrollPane(postScrollPane);
 
             postViewController.addPost("나", "@me", "북마크 테스트", 9999, 1, 8);
             postViewController.addPost("나", "@me", "북마크 테스트2", 1234132, 1, 8);

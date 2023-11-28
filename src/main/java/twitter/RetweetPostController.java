@@ -21,10 +21,10 @@ public class RetweetPostController extends PostController {
     @FXML
     GridPane retweetGridPane;
 
-    public void initlaizePost(String username, String handle, String contentText, int likeCnt, int retweetCnt,
+    public void initPost(String username, String handle, String contentText, int likeCnt, int retweetCnt,
             int replyCnt, String retweetUsername, String retweetHandle, String retweetContentText) {
 
-        super.initalizePost(username, handle, contentText, likeCnt, retweetCnt, replyCnt);
+        super.initPost(username, handle, contentText, likeCnt, retweetCnt, replyCnt);
 
         this.retweetUserName.setText(retweetUsername);
         this.retweetUserHandleLabel.setText(retweetHandle);

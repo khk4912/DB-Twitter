@@ -41,7 +41,7 @@ public class PostController {
     @FXML
     ColumnConstraints userHandleGridPane;
 
-    public void initalizePost(String username, String handle, String contentText, int likeCnt, int retweetCnt,
+    public void initPost(String username, String handle, String contentText, int likeCnt, int retweetCnt,
             int replyCnt) {
 
         this.usernameLabel.setText(username);

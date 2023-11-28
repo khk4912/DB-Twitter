@@ -15,7 +15,7 @@ public class PostViewController {
 
     private ScrollPane postScrollPane;
 
-    public void initalize(ScrollPane postScrollPane) {
+    public void initScrollPane(ScrollPane postScrollPane) {
         this.postScrollPane = postScrollPane;
     }
 
@@ -32,7 +32,7 @@ public class PostViewController {
             AnchorPane post = fxmlLoader.load();
             PostController postController = fxmlLoader.getController();
 
-            postController.initalizePost(username, handle, contentText, likeCnt, retweetCnt, replyCnt);
+            postController.initPost(username, handle, contentText, likeCnt, retweetCnt, replyCnt);
             postGridPane.addRow(postGridPane.getRowCount(), post);
 
         } catch (IOException e) {
@@ -56,7 +56,7 @@ public class PostViewController {
             AnchorPane post = fxmlLoader.load();
             RetweetPostController retweetPostController = fxmlLoader.getController();
 
-            retweetPostController.initlaizePost(username, handle, contentText, likeCnt, retweetCnt, replyCnt,
+            retweetPostController.initPost(username, handle, contentText, likeCnt, retweetCnt, replyCnt,
                     retweetUsername, retweetHandle, retweetContentText);
             postGridPane.addRow(postGridPane.getRowCount(), post);
 
