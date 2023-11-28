@@ -7,54 +7,63 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/21"
-  xmlns:fx="http://javafx.com/fxml/1" fx:controller="twitter.LoginController">
+<VBox prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="twitter.LoginController">
   <children>
-    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="305.0" prefWidth="403.0"
-      VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="300.0" prefWidth="400.0" VBox.vgrow="ALWAYS">
       <children>
-        <TextField fx:id="idFiled" layoutX="189.0" layoutY="98.0" prefHeight="8.0" prefWidth="100.0">
-          <font>
-            <Font name="Pretendard Regular" size="10.0" />
-          </font>
-        </TextField>
-        <Button fx:id="registerButton" layoutX="216.0" layoutY="211.0" mnemonicParsing="false"
-          onAction="#switchToRegister" text="회원가입">
+        <Button fx:id="registerButton" layoutX="211.0" layoutY="211.0" mnemonicParsing="false" onAction="#switchToRegister" text="회원가입">
           <font>
             <Font name="Pretendard Regular" size="13.0" />
           </font>
         </Button>
-        <Button fx:id="loginButton" layoutX="125.0" layoutY="211.0" mnemonicParsing="false"
-          onAction="#switchToMainView" text="로그인">
+        <Button fx:id="loginButton" layoutX="120.0" layoutY="211.0" mnemonicParsing="false" onAction="#switchToMainView" text="로그인">
           <font>
             <Font name="Pretendard Regular" size="13.0" />
           </font>
         </Button>
-        <ImageView fitHeight="68.0" fitWidth="75.0" layoutX="166.0" layoutY="14.0"
-          pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="68.0" fitWidth="75.0" layoutX="166.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
           <image>
             <Image url="@assets/twitter_png.png" />
           </image>
         </ImageView>
-        <Label layoutX="116.0" layoutY="102.0" text="아이디">
-          <font>
-            <Font name="Pretendard Bold" size="13.0" />
-          </font>
-        </Label>
-        <Label layoutX="111.0" layoutY="139.0" text="비밀번호">
-          <font>
-            <Font name="Pretendard Bold" size="13.0" />
-          </font>
-        </Label>
-        <PasswordField fx:id="passwordField" layoutX="189.0" layoutY="135.0" prefHeight="8.0"
-          prefWidth="100.0">
-          <font>
-            <Font name="Pretendard Regular" size="10.0" />
-          </font>
-        </PasswordField>
+            <GridPane layoutX="109.0" layoutY="97.0" prefHeight="85.0" prefWidth="182.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="151.0" minWidth="10.0" prefWidth="69.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="255.0" minWidth="10.0" prefWidth="113.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label text="아이디">
+                     <font>
+                        <Font name="Pretendard Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="idFiled" prefHeight="8.0" prefWidth="100.0" GridPane.columnIndex="1">
+                     <font>
+                        <Font name="Pretendard Regular" size="10.0" />
+                     </font>
+                  </TextField>
+                  <Label text="비밀번호" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Pretendard Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="passwordField" prefHeight="8.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Pretendard Regular" size="10.0" />
+                     </font>
+                  </PasswordField>
+               </children>
+            </GridPane>
       </children>
     </AnchorPane>
   </children>
