@@ -8,7 +8,7 @@ public class LoginController {
 
     @FXML
     private void switchToRegister() throws IOException {
-        App.setHeight(500);
+        App.setHeight(450);
 
         App.setRoot("register_form");
     }
