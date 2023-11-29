@@ -12,13 +12,16 @@ import javafx.stage.Stage;
 import atlantafx.base.theme.PrimerLight;
 
 import twitter.db.DB;
+import twitter.utils.LoginContext;
 
 /**
  * JavaFX App
  */
 public class App extends Application {
     private static Scene scene;
+
     public static DB DB;
+    public static LoginContext loginContext;
 
     @Override
     public void start(Stage stage) throws IOException {
