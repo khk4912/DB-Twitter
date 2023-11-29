@@ -15,10 +15,19 @@ public class PostViewController {
     @FXML
     private GridPane postGridPane;
 
+    @FXML
+    private GridPane emptyNotifyGridPane;
+
     private ScrollPane postScrollPane;
+
+    public void showEmptyNotify() {
+        emptyNotifyGridPane.setVisible(true);
+    }
 
     public void initScrollPane(ScrollPane postScrollPane) {
         this.postScrollPane = postScrollPane;
+        emptyNotifyGridPane.setVisible(false);
+
     }
 
     public void addPost(PostContext post) {

@@ -40,10 +40,13 @@ public class MainViewController {
             PostViewController postViewController = fxmlLoader.getController();
             postViewController.initScrollPane(postScrollPane);
 
-            for (PostContext post : postList) {
-                postViewController.addPost(post);
+            if (postList.size() == 0) {
+                postViewController.showEmptyNotify();
+            } else {
+                for (PostContext post : postList) {
+                    postViewController.addPost(post);
+                }
             }
-
             postScrollPane.setContent(postView);
 
         } catch (IOException e) {
