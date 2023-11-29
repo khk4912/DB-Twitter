@@ -6,14 +6,18 @@ import java.util.Date;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+
 import javafx.scene.text.Text;
 import twitter.utils.DateCalculator;
 import javafx.scene.control.Label;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.image.ImageView;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class PostController {
 
@@ -93,5 +97,22 @@ public class PostController {
     @FXML
     private void showPostPopupMenuClicked(MouseEvent event) {
         showPopup(event.getScreenX(), event.getScreenY());
+    }
+
+    @FXML
+    private void loadDetailedPostView() {
+        // Create new popup window
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("detailed_post_view.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+
+            Stage stage = new Stage();
+            stage.setTitle("글 보기");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
