@@ -115,4 +115,9 @@ public class PostController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    private void loadWriterProfileView() {
+        // TODO
+    }
 }
