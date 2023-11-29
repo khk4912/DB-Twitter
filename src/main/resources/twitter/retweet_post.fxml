@@ -23,6 +23,8 @@
         <columnConstraints>
           <ColumnConstraints fx:id="userNameGridPane" fillWidth="false" hgrow="NEVER" />
           <ColumnConstraints fx:id="userHandleGridPane" fillWidth="false" hgrow="NEVER" />
+            <ColumnConstraints fillWidth="false" hgrow="NEVER" minWidth="10.0" />
+            <ColumnConstraints fillWidth="false" hgrow="NEVER" minWidth="10.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -40,6 +42,30 @@
                <font>
                   <Font name="Pretendard Regular" size="13.0" />
                </font>
+            </Label>
+            <Label fx:id="handleLabel11" prefHeight="18.0" text="·" textFill="#000000b7">
+               <font>
+                  <Font name="Pretendard Regular" size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+            <Label fx:id="handleLabel111" prefHeight="18.0" text="·" textFill="#000000b7" GridPane.columnIndex="2">
+               <font>
+                  <Font name="Pretendard Regular" size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+            <Label fx:id="dateTextLabel" prefHeight="18.0" text="3일 전" textFill="#000000b7" GridPane.columnIndex="3">
+               <font>
+                  <Font name="Pretendard Regular" size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="1.0" />
+               </padding>
             </Label>
          </children>
       </GridPane>
@@ -61,6 +87,8 @@
                         <ColumnConstraints fx:id="userNameGridPane1" />
                         <ColumnConstraints fx:id="userHandleGridPane1" fillWidth="false" hgrow="NEVER" />
                         <ColumnConstraints fillWidth="false" hgrow="NEVER" />
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" minWidth="10.0" />
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" minWidth="10.0" />
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -87,6 +115,22 @@
                               <Insets />
                            </GridPane.margin>
                         </ImageView>
+                        <Label fx:id="handleLabel112" prefHeight="18.0" text="·" textFill="#000000b7" GridPane.columnIndex="3">
+                           <font>
+                              <Font name="Pretendard Regular" size="13.0" />
+                           </font>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="retweetDateTextLabel" prefHeight="18.0" text="3일 전" textFill="#000000b7" GridPane.columnIndex="4">
+                           <font>
+                              <Font name="Pretendard Regular" size="13.0" />
+                           </font>
+                           <padding>
+                              <Insets left="1.0" />
+                           </padding>
+                        </Label>
                      </children>
                   </GridPane>
                   <GridPane layoutX="116.0" layoutY="33.669921875" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="20.0">

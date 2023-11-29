@@ -61,11 +61,13 @@ public class PostViewController {
 
     public void addRetweetPost(String username, String handle, String contentText, String retweetUsername,
             String retweetHandle, String retweetContentText) {
-        addRetweetPost(username, handle, contentText, retweetUsername, retweetHandle, retweetContentText, 0, 0, 0);
+        addRetweetPost(username, handle, contentText, retweetUsername, retweetHandle, retweetContentText, 0, 0, 0,
+                new Date(), new Date());
     }
 
     public void addRetweetPost(String username, String handle, String contentText, String retweetUsername,
-            String retweetHandle, String retweetContentText, int likeCnt, int retweetCnt, int replyCnt) {
+            String retweetHandle, String retweetContentText, int likeCnt, int retweetCnt, int replyCnt,
+            Date updateDate, Date retweetDate) {
         try {
 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("retweet_post.fxml"));
@@ -74,7 +76,7 @@ public class PostViewController {
             RetweetPostController retweetPostController = fxmlLoader.getController();
 
             retweetPostController.initPost(username, handle, contentText, likeCnt, retweetCnt, replyCnt,
-                    retweetUsername, retweetHandle, retweetContentText);
+                    retweetUsername, retweetHandle, retweetContentText, updateDate, retweetDate);
             postGridPane.addRow(postGridPane.getRowCount(), post);
 
         } catch (IOException e) {
