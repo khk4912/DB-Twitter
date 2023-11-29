@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import twitter.db.YourProfile;
+
 import twitter.utils.PostContext;
 import twitter.utils.TwitterAlert;
 
@@ -42,16 +44,18 @@ public class Home { // User&FollowingPostViewer=timeline
 
                     int postID = rs.getInt(1);
                     String writerID = rs.getString(2);
+
+                    String nickname = new YourProfile(con, writerID).getUserInfo().nickname;
+
                     String image = null; // TODO: Image?
                     String content = rs.getString(4);
                     Date updateDate = rs.getDate(5);
                     Date registrationDate = rs.getDate(6);
 
                     int likeCnt = rs.getInt(7);
-                    String nickname = rs.getString(9);
 
-                    results.add(new PostContext(postID, writerID, image, content, updateDate, registrationDate, likeCnt,
-                            nickname));
+                    results.add(new PostContext(postID, nickname, writerID, image, content, updateDate,
+                            registrationDate, likeCnt));
                 }
             }
 

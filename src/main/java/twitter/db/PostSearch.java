@@ -2,6 +2,12 @@ package twitter.db;
 
 import java.sql.*;
 import java.util.Scanner;
+import java.util.ArrayList;
+
+import twitter.db.YourProfile;
+
+import twitter.utils.PostContext;
+import twitter.utils.TwitterAlert;
 
 public class PostSearch {
     private Connection con;
@@ -32,7 +38,38 @@ public class PostSearch {
         }
     }
 
-    public void searchById(String ID) {
+    public ArrayList<PostContext> searchByID(String UserID) {
+        ArrayList<PostContext> postList = new ArrayList<PostContext>();
+
+        try {
+            String sql = "SELECT * FROM posts WHERE user_id_writer = ? ORDER BY update_date DESC";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            YourProfile yourProfile = new YourProfile(con, UserID);
+
+            String nickname = yourProfile.getUserInfo().nickname;
+
+            pstmt.setString(1, UserID);
+
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+
+                PostContext post = new PostContext(rs.getInt("post_id"), nickname, rs.getString("user_id_writer"),
+                        rs.getString("post_image"), rs.getString("content"), rs.getTimestamp("update_date"),
+                        rs.getTimestamp("registration_date"), rs.getInt("num_of_likes"));
+                postList.add(post);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            TwitterAlert.error("ID 검색 오류!", e.getMessage());
+        }
+
+        return postList;
+
+    }
+
+    public void searchByIdPrint(String ID) {
         try {
             String sql = "SELECT * FROM posts WHERE writer_id = ?";
             PreparedStatement pstmt = con.prepareStatement(sql);

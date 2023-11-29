@@ -2,9 +2,12 @@ package twitter;
 
 import java.io.IOException;
 
+import java.util.Date;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.text.Text;
+import twitter.utils.DateCalculator;
 import javafx.scene.control.Label;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.image.ImageView;
@@ -41,8 +44,17 @@ public class PostController {
     @FXML
     ColumnConstraints userHandleGridPane;
 
+    @FXML
+    Label dateTextLabel;
+
     public void initPost(String username, String handle, String contentText, int likeCnt, int retweetCnt,
             int replyCnt) {
+
+        initPost(username, handle, contentText, likeCnt, retweetCnt, replyCnt, new Date());
+    }
+
+    public void initPost(String username, String handle, String contentText, int likeCnt, int retweetCnt,
+            int replyCnt, Date updateDate) {
 
         this.usernameLabel.setText(username);
         this.handleLabel.setText(handle);
@@ -51,6 +63,8 @@ public class PostController {
         this.likeCount.setText(Integer.toString(likeCnt));
         this.retweetCount.setText(Integer.toString(retweetCnt));
         this.commentCount.setText(Integer.toString(replyCnt));
+
+        this.dateTextLabel.setText(DateCalculator.getDateDiffText(updateDate));
 
     }
 

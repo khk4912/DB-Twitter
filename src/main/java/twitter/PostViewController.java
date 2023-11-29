@@ -2,6 +2,8 @@ package twitter;
 
 import java.io.IOException;
 
+import java.util.Date;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -31,15 +33,15 @@ public class PostViewController {
     }
 
     public void addPost(PostContext post) {
-        addPost(post.nickname, '@' + post.writerID, post.content, post.likeCnt, 0, 0);
+        addPost(post.nickname, '@' + post.writerID, post.content, post.likeCnt, 0, 0, post.updateDate);
     }
 
     public void addPost(String username, String handle, String contentText) {
-        addPost(username, handle, contentText, 0, 0, 0);
+        addPost(username, handle, contentText, 0, 0, 0, new Date());
     }
 
     public void addPost(String username, String handle, String contentText, int likeCnt, int retweetCnt,
-            int replyCnt) {
+            int replyCnt, Date updateDate) {
         try {
 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("post.fxml"));
@@ -47,7 +49,7 @@ public class PostViewController {
             AnchorPane post = fxmlLoader.load();
             PostController postController = fxmlLoader.getController();
 
-            postController.initPost(username, handle, contentText, likeCnt, retweetCnt, replyCnt);
+            postController.initPost(username, handle, contentText, likeCnt, retweetCnt, replyCnt, updateDate);
             postGridPane.addRow(postGridPane.getRowCount(), post);
 
         } catch (IOException e) {
