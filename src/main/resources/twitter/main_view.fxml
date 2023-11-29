@@ -56,16 +56,18 @@
                      </image>
                   </ImageView>
                   <GridPane layoutX="17.0" layoutY="82.0">
-                    <columnConstraints>
-                      <ColumnConstraints />
+                     <columnConstraints>
+                        <ColumnConstraints />
                         <ColumnConstraints hgrow="SOMETIMES" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints vgrow="SOMETIMES" />
-                      <RowConstraints vgrow="SOMETIMES" />
+                     </columnConstraints>
+                     <rowConstraints>
                         <RowConstraints vgrow="SOMETIMES" />
+                        <RowConstraints vgrow="SOMETIMES" />
+                        <RowConstraints vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="-Infinity" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
+                        <RowConstraints vgrow="SOMETIMES" />
+                     </rowConstraints>
                      <children>
                         <ImageView fx:id="homeIcon" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#loadPostView" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
                            <image>
@@ -103,6 +105,17 @@
                         <ImageView fx:id="searchIcon" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#loadSearchView" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <image>
                               <Image url="@assets/search.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <GridPane.margin>
+                              <Insets bottom="30.0" />
+                           </GridPane.margin>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#loadMyProfileView" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <image>
+                              <Image url="@assets/profile.png" />
                            </image>
                            <cursor>
                               <Cursor fx:constant="HAND" />

@@ -113,6 +113,20 @@ public class MainViewController {
 
     }
 
+    @FXML
+    private void loadMyProfileView() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("profile_view.fxml"));
+
+            AnchorPane profileView = fxmlLoader.load();
+
+            postScrollPane.setContent(profileView);
+        } catch (IOException e) {
+            System.out.println("Error loading profile_view.fxml" + e.getCause() + e.getMessage());
+            return;
+        }
+    }
+
     public void initialize() {
         // 기본값은 PostView로 설정
         loadPostView();
