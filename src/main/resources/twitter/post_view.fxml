@@ -37,12 +37,12 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text fx:id="emptyText" fill="#838383" strokeType="OUTSIDE" strokeWidth="0.0" text="보여드릴 트윗이 없어요.">
+            <Text fx:id="emptyText" fill="#838383" strokeType="OUTSIDE" strokeWidth="0.0" text="보여드릴 트윗이 하나도 없네요.">
                <font>
                   <Font name="Pretendard Regular" size="22.0" />
                </font>
             </Text>
-            <Text fx:id="emptyText1" fill="#838383" strokeType="OUTSIDE" strokeWidth="0.0" text="새로운 유저를 팔로우하세요!" GridPane.rowIndex="1">
+            <Text fx:id="emptyText1" fill="#838383" strokeType="OUTSIDE" strokeWidth="0.0" text="하나 써보는거 어때요?" GridPane.rowIndex="1">
                <font>
                   <Font name="Pretendard Regular" size="22.0" />
                </font>
