@@ -2,13 +2,21 @@ package twitter;
 
 import java.io.IOException;
 
+import java.util.ArrayList;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.ScrollPane;
 
+import twitter.db.Home;
+import twitter.utils.PostContext;
+import twitter.utils.TwitterAlert;
+
 public class MainViewController {
+
+    Home home = new Home(App.DB.getConnection(), App.loginContext.user.userID);
 
     @FXML
     private SplitPane splitPane;
@@ -23,28 +31,24 @@ public class MainViewController {
     @FXML
     private void loadPostView() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("post_view.fxml"));
 
+            ArrayList<PostContext> postList = home.getFollowingPosts();
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("post_view.fxml"));
             AnchorPane postView = fxmlLoader.load();
 
             PostViewController postViewController = fxmlLoader.getController();
             postViewController.initScrollPane(postScrollPane);
 
-            // Demo retweet posts
-            postViewController.addRetweetPost("나", "@kosame___", "돈까스 ㄱㄱ ", "너", "@you", "점심 뭐 먹지?", 13, 1, 8);
+            for (PostContext post : postList) {
+                postViewController.addPost(post);
+            }
 
-            postViewController.addRetweetPost("나", "@kosame___", "", "너", "@you", "리트윗 하면 복이 와요", 13, 1, 8);
-
-            // Demo posts
-            postViewController.addPost("Demo", "@Demo", "This is a demo!", 1, 10, 100);
-
-            postViewController.addPost("Demo2", "@random",
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ac interdum nisl. Maecenas rhoncus rhoncus libero, ac lacinia nibh elementum nec. Donec tempus, lacus id porta cursus, erat lectus condimentum tortor, sed tincidunt dui est a erat. Nunc vel tellus eget mi gravida lacinia tincidunt ut nibh. Nam vitae enim in elit consequat pretium. Suspendisse porttitor nisi quis massa egestas commodo. Integer ultricies vel massa a iaculis. Donec porta, diam ac tincidunt malesuada, ipsum eros consequat sapien, pretium pharetra mi risus vitae tellus. Aliquam varius at eros vel luctus.");
-
-            postViewController.addPost("나", "@kosame___", "오늘 점심 뭐 먹지?", 13, 1, 8);
             postScrollPane.setContent(postView);
+
         } catch (IOException e) {
-            System.out.println("Error loading post_view.fxml" + e.getCause() + e.getMessage());
+            e.printStackTrace();
+            TwitterAlert.error("게시글 로드 오류!", e.getMessage());
             return;
         }
 

@@ -27,9 +27,9 @@ public class Home { // User&FollowingPostViewer=timeline
 
         String sql = "SELECT posts.*, user.nickname " +
                 "FROM posts " +
-                "JOIN following ON posts.user_id_writer = following.user_id_following " +
+                "JOIN following ON posts.user_id_writer = following.following_id " +
                 "JOIN user ON posts.user_id_writer = user.user_id " +
-                "WHERE following.user_id = ? OR posts.user_id_writer = ? " +
+                "WHERE following.follow_id = ? OR posts.user_id_writer = ? " +
                 "ORDER BY posts.update_date DESC";
 
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {

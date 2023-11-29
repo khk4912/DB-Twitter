@@ -8,6 +8,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.control.ScrollPane;
 
+import twitter.utils.PostContext;
+
 public class PostViewController {
 
     @FXML
@@ -17,6 +19,10 @@ public class PostViewController {
 
     public void initScrollPane(ScrollPane postScrollPane) {
         this.postScrollPane = postScrollPane;
+    }
+
+    public void addPost(PostContext post) {
+        addPost(post.nickname, '@' + post.writerID, post.content, post.likeCnt, 0, 0);
     }
 
     public void addPost(String username, String handle, String contentText) {
