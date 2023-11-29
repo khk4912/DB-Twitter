@@ -14,10 +14,10 @@ public class PostContext {
     public int likeCnt;
     public String nickname;
 
-    public PostContext(int postID, String wrtierID, String image, String content, Date updateDate,
+    public PostContext(int postID, String writerID, String image, String content, Date updateDate,
             Date registrationDate, int likeCnt, String nickname) {
         this.postID = postID;
-        this.writerID = wrtierID;
+        this.writerID = writerID;
         this.image = image;
         this.content = content;
         this.updateDate = updateDate;
