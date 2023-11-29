@@ -6,7 +6,7 @@ public class PostContext {
     // TODO: Image?
 
     public int postID;
-    public String wrtierID;
+    public String writerID;
     public String image;
     public String content;
     public Date updateDate;
@@ -17,7 +17,7 @@ public class PostContext {
     public PostContext(int postID, String wrtierID, String image, String content, Date updateDate,
             Date registrationDate, int likeCnt, String nickname) {
         this.postID = postID;
-        this.wrtierID = wrtierID;
+        this.writerID = wrtierID;
         this.image = image;
         this.content = content;
         this.updateDate = updateDate;
