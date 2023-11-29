@@ -1,10 +1,15 @@
 package twitter.db;
 
+import java.util.Date;
+import java.util.ArrayList;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+
+import twitter.utils.PostContext;
+import twitter.utils.TwitterAlert;
 
 public class Home { // User&FollowingPostViewer=timeline
 
@@ -14,6 +19,48 @@ public class Home { // User&FollowingPostViewer=timeline
     public Home(Connection con, String user_id) {
         this.con = con;
         this.user_id = user_id;
+    }
+
+    public ArrayList<PostContext> getFollowingPosts() {
+
+        ArrayList<PostContext> results = new ArrayList<>();
+
+        String sql = "SELECT posts.*, user.nickname " +
+                "FROM posts " +
+                "JOIN following ON posts.user_id_writer = following.user_id_following " +
+                "JOIN user ON posts.user_id_writer = user.user_id " +
+                "WHERE following.user_id = ? OR posts.user_id_writer = ? " +
+                "ORDER BY posts.update_date DESC";
+
+        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+
+            pstmt.setString(1, user_id);
+            pstmt.setString(2, user_id);
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+
+                    int postID = rs.getInt(1);
+                    String writerID = rs.getString(2);
+                    String image = null; // TODO: Image?
+                    String content = rs.getString(4);
+                    Date updateDate = rs.getDate(5);
+                    Date registrationDate = rs.getDate(6);
+
+                    int likeCnt = rs.getInt(7);
+                    String nickname = rs.getString(9);
+
+                    results.add(new PostContext(postID, writerID, image, content, updateDate, registrationDate, likeCnt,
+                            nickname));
+                }
+            }
+
+        } catch (Exception e) {
+            TwitterAlert.error("타임라인 오류!", e.getMessage());
+        }
+
+        return results;
+
     }
 
     public void viewFollowingPosts() throws SQLException {
