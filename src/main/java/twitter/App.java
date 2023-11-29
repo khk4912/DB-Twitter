@@ -18,7 +18,7 @@ import twitter.db.DB;
  */
 public class App extends Application {
     private static Scene scene;
-    public DB DB;
+    public static DB DB;
 
     @Override
     public void start(Stage stage) throws IOException {

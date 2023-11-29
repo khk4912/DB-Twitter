@@ -52,7 +52,7 @@
   <children>
     <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="401.0" prefWidth="404.0" VBox.vgrow="ALWAYS">
       <children>
-        <Button layoutX="171.0" layoutY="331.0" mnemonicParsing="false" text="가입하기">
+        <Button layoutX="171.0" layoutY="331.0" mnemonicParsing="false" onMouseClicked="#register" text="가입하기">
                <font>
                   <Font name="Pretendard Regular" size="13.0" />
                </font></Button>
