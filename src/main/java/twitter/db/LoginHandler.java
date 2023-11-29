@@ -26,7 +26,6 @@ public class LoginHandler {
 
             if (rs.next()) {
                 System.out.println("Logged in!!");
-
             } else {
                 throw new WrongIDorPassword("잘못된 ID 혹은 비밀번호를 입력하셨어요. 다시 시도해주세요.");
             }

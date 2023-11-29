@@ -18,6 +18,7 @@ import twitter.utils.TwitterAlert;
 import twitter.utils.FieldChecker;
 import twitter.db.SignUp;
 
+// TODO: ID 중복 입력 끝나자마자 확인?
 public class RegisterController {
 
     SignUp SignUpHandler = new SignUp(App.DB.getConnection());

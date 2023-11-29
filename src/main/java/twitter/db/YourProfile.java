@@ -42,6 +42,10 @@ public class YourProfile {
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery(query);
 
+        if (!rs.next()) {
+            throw new SQLException("유저 정보를 가져오는데 실패했습니다.");
+        }
+
         String userID = rs.getString("user_id");
         String nickname = rs.getString("nickname");
         String gender = rs.getString("gender");
