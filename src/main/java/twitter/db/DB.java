@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import twitter.utils.TwitterAlert;
+
 public class DB {
     private Connection con;
 
@@ -28,6 +30,7 @@ public class DB {
             return con;
         } catch (SQLException e) {
             System.out.println("makeConnection(): " + e.getMessage());
+            TwitterAlert.error("오류!", "DB 연결에 실패했습니다. ");
             return null;
         }
     }
