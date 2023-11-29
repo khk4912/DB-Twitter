@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane style="-fx-border-style: solid; -fx-border-width: 1 0 0.2px 0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="twitter.CommentController">
+   <children>
+      <ImageView fitHeight="33.0" fitWidth="33.0" layoutX="67.0" layoutY="18.0" onMouseClicked="#loadWriterProfileView" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/default_profile.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <GridPane fx:id="userInfoGridPane" layoutX="116.0" layoutY="17.0" maxHeight="-Infinity" prefHeight="15.0">
+         <columnConstraints>
+            <ColumnConstraints fx:id="userNameGridPane" fillWidth="false" hgrow="NEVER" />
+            <ColumnConstraints fx:id="userHandleGridPane" fillWidth="false" hgrow="NEVER" />
+            <ColumnConstraints fillWidth="false" hgrow="NEVER" minWidth="10.0" />
+            <ColumnConstraints fillWidth="false" hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label fx:id="usernameLabel" onMouseClicked="#loadWriterProfileView" text="username">
+               <font>
+                  <Font name="Pretendard Bold" size="13.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="10.0" />
+               </GridPane.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <Label fx:id="handleLabel" onMouseClicked="#loadWriterProfileView" prefHeight="18.0" text="\@username" textFill="#000000b7" GridPane.columnIndex="1">
+               <font>
+                  <Font name="Pretendard Regular" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <Label fx:id="dateTextLabel" prefHeight="18.0" text="3일 전" textFill="#000000b7" GridPane.columnIndex="3">
+               <font>
+                  <Font name="Pretendard Regular" size="13.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+               <padding>
+                  <Insets left="1.0" />
+               </padding>
+            </Label>
+            <Label fx:id="handleLabel11" prefHeight="18.0" text="·" textFill="#000000b7" GridPane.columnIndex="2">
+               <font>
+                  <Font name="Pretendard Regular" size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+         </children>
+      </GridPane>
+      <GridPane layoutX="116.0" layoutY="33.669921875">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Text fx:id="contentText" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis est dui, tempor vitae neque eget, hendrerit accumsan metus. Nulla vitae efficitur quam. Aliquam ac leo nec enim malesuada aliquam ullamcorper non ipsum. Praesent nibh ex, tempus sit amet imperdiet quis, sagittis non risus. Sed nec tempus enim, sed rutrum ex." wrappingWidth="538.5139865875244">
+               <font>
+                  <Font name="Pretendard Regular" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </Text>
+            <GridPane prefHeight="30.0" GridPane.rowIndex="2">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="80.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="80.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="80.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="80.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@assets/like.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Label fx:id="likeCount" text="0" textFill="#515151" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font name="Pretendard Regular" size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
+                     <image>
+                        <Image url="@assets/retweet.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Label fx:id="retweetCount" text="0" textFill="#515151" GridPane.columnIndex="3">
+                     <font>
+                        <Font name="Pretendard Regular" size="13.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+                  <ImageView fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4">
+                     <image>
+                        <Image url="@assets/comment.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Label fx:id="commentCount" text="0" textFill="#515151" GridPane.columnIndex="5">
+                     <font>
+                        <Font name="Pretendard Regular" size="13.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+      <ImageView fx:id="menuIcon" fitHeight="15.0" fitWidth="51.0" layoutX="633.0" layoutY="14.0" onContextMenuRequested="#showPostPopupMenuRequested" onMouseClicked="#showPostPopupMenuClicked" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="670.0">
+         <image>
+            <Image url="@assets/menu.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+   </children>
+   <padding>
+      <Insets bottom="10.0" />
+   </padding>
+</AnchorPane>
