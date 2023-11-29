@@ -8,4 +8,6 @@ module twitter {
     opens twitter to javafx.fxml;
 
     exports twitter;
+    exports twitter.utils;
+    exports twitter.db;
 }
