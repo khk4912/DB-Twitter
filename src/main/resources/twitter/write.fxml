@@ -20,11 +20,11 @@
             <Image url="@assets/default_profile.png" />
          </image>
       </ImageView>
-      <TextArea focusTraversable="false" layoutX="94.0" layoutY="98.0" prefHeight="255.0" prefWidth="562.0" promptText="무슨 일이 일어나고 있나요?" style="-fx-border-width: 1 0 1 0;">
+      <TextArea fx:id="contentTextArea" focusTraversable="false" layoutX="94.0" layoutY="98.0" prefHeight="255.0" prefWidth="562.0" promptText="무슨 일이 일어나고 있나요?" style="-fx-border-width: 1 0 1 0;">
          <font>
             <Font name="Pretendard Regular" size="13.0" />
          </font>
       </TextArea>
-      <Button layoutX="587.0" layoutY="376.0" mnemonicParsing="false" text="작성하기" />
+      <Button layoutX="587.0" layoutY="376.0" mnemonicParsing="false" onMouseClicked="#upload" text="작성하기" />
    </children>
 </AnchorPane>
