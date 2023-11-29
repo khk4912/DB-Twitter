@@ -105,7 +105,8 @@ public class MainViewController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("search_view.fxml"));
 
             AnchorPane searchView = fxmlLoader.load();
-            // WritePostController writePostController = fxmlLoader.getController();
+            SearchController searchController = fxmlLoader.getController();
+            searchController.initScrollPane(postScrollPane);
 
             postScrollPane.setContent(searchView);
         } catch (IOException e) {
@@ -119,8 +120,10 @@ public class MainViewController {
     private void loadMyProfileView() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("profile_view.fxml"));
-
             AnchorPane profileView = fxmlLoader.load();
+
+            ProfileViewController profileViewController = fxmlLoader.getController();
+            profileViewController.initScrollPane(postScrollPane);
 
             postScrollPane.setContent(profileView);
         } catch (IOException e) {
