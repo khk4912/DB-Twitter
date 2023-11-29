@@ -62,7 +62,7 @@ public class PostController {
             PostPopupMenuController postPopupMenuController = fxmlLoader.getController();
 
             // TODO: change isMyPost
-            postPopupMenuController.initlaize(true);
+            postPopupMenuController.initialize(true);
             contextMenu.show(menuIcon, X, Y);
 
         } catch (IOException e) {
