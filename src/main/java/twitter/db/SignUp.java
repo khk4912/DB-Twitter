@@ -1,57 +1,51 @@
 package twitter.db;
 
+import java.util.Date;
+import java.util.Scanner;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Scanner;
+
+import twitter.exceptions.UserIDAlreadyExists;
 
 public class SignUp {
     private Connection con;
-    private Statement stmt;
-    private PreparedStatement pstm;
-    private ResultSet rs;
-    private Scanner sc;
+    // private Scanner sc;
 
-    public SignUp(Connection con, Statement stmt, PreparedStatement pstm, ResultSet rs) {
+    public SignUp(Connection con) {
         this.con = con;
-        this.stmt = stmt;
-        this.pstm = pstm;
-        this.rs = rs;
-        this.sc = new Scanner(System.in);
     }
 
-    public void signUp() {
+    public void signUp(String userID, String password, String nickname, String gender, Date birthday)
+            throws UserIDAlreadyExists {
         try {
-            String user_id, pwd, nickname;
+            Statement stmt = con.createStatement();
+            PreparedStatement pstm;
+            ResultSet rs;
 
-            System.out.println("Input UserID / Password / Nickname / gender / birthday(2023-11-25)");
-            user_id = sc.next();
-            pwd = sc.next();
-            nickname = sc.next();
-            String gender = sc.next();
-            String birthday = sc.next();
-
-            String s1 = "select user_id from user where user_id=\"" + user_id + "\"";
+            String s1 = "select user_id from user where user_id=\"" + userID + "\"";
             rs = stmt.executeQuery(s1);
 
-            if (rs.next()) {
-                System.out.println("User name already exists. Please try again!");
-            } else {
-                String insertQuery = "insert into User(user_id, pwd, nickname, gender, birthday) values (?, ?, ?, ?, ?)";
-                pstm = con.prepareStatement(insertQuery);
-                pstm.setString(1, user_id);
-                pstm.setString(2, pwd);
-                pstm.setString(3, nickname);
-                pstm.setString(4, gender);
-                pstm.setString(5, birthday);
+            if (rs.next())
+                throw new UserIDAlreadyExists("유저 ID " + userID + "는 이미 존재합니다.\n다른 ID로 시도해주세요.");
 
-                pstm.executeUpdate();
-                System.out.println("Sign-up successful!");
-            }
+            String insertQuery = "insert into User(user_id, pwd, nickname, gender, birthday) values (?, ?, ?, ?, ?)";
+            pstm = con.prepareStatement(insertQuery);
+            pstm.setString(1, userID);
+            pstm.setString(2, password);
+            pstm.setString(3, nickname);
+            pstm.setString(4, gender);
+            pstm.setDate(5, new java.sql.Date(birthday.getTime()));
+
+            pstm.executeUpdate();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
+
 }
