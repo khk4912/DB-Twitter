@@ -24,7 +24,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         // DB Initalize
         DB = new DB();
-        DB.makeConnection("user", "mypassword", "twitter");
+        DB.makeConnection("user", "mypassword", "Twitter");
 
         Application.setUserAgentStylesheet(new PrimerLight().getUserAgentStylesheet());
         Font.loadFont(App.class.getResourceAsStream("assets/Pretendard-Regular.ttf").toString(), 10);
