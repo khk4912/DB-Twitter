@@ -7,6 +7,8 @@ import java.sql.Statement;
 import java.util.Date;
 import java.time.LocalDate;
 
+import twitter.utils.UserInfo;
+
 public class YourProfile {
     private Connection con;
     private String user_id;
@@ -33,6 +35,21 @@ public class YourProfile {
             if (dateString.equals(birthday)) // 현재와 날짜 비교
                 System.out.println("Happy birthday!");
         }
+    }
+
+    public UserInfo getUserInfo() throws SQLException {
+        String query = "SELECT * FROM User WHERE user_id=\"" + user_id + "\"";
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+
+        String userID = rs.getString("user_id");
+        String nickname = rs.getString("nickname");
+        String gender = rs.getString("gender");
+        Date birthday = rs.getDate("birthday");
+        String introduce = rs.getString("introduce");
+
+        return new UserInfo(userID, nickname, gender, birthday, introduce);
+
     }
 
     // 유저 정보 출력 메서드
