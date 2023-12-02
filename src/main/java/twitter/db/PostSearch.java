@@ -16,7 +16,35 @@ public class PostSearch {
         this.con = con;
     }
 
-    public void searchByContent(String content) {
+    public ArrayList<PostContext> searchByContent(String content) {
+        ArrayList<PostContext> postList = new ArrayList<PostContext>();
+
+        try {
+            String sql = "SELECT * FROM posts WHERE content LIKE ?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, "%" + content + "%"); // Use '%' for partial match
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                YourProfile yourProfile = new YourProfile(con, rs.getString("user_id_writer"));
+
+                String nickname = yourProfile.getUserInfo().nickname;
+
+                PostContext post = new PostContext(rs.getInt("post_id"), nickname, rs.getString("user_id_writer"),
+                        rs.getString("post_image"), rs.getString("content"), rs.getTimestamp("update_date"),
+                        rs.getTimestamp("registration_date"), rs.getInt("num_of_likes"));
+                postList.add(post);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            TwitterAlert.error("게시글 검색 오류!", e.getMessage());
+        }
+
+        return postList;
+    }
+
+    public void searchByContentPrint(String content) {
         try {
             System.out.println("Enter the content to search:");
             String sql = "SELECT * FROM posts WHERE content LIKE ?";
@@ -25,6 +53,7 @@ public class PostSearch {
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
+
                 System.out.println("Post ID: " + rs.getInt("post_id") + ", Writer ID: " + rs.getString("user_id_writer")
                         +
                         ", Image: " + rs.getString("post_image") + ", Content: " + rs.getString("content") +
@@ -90,7 +119,34 @@ public class PostSearch {
         }
     }
 
-    public void searchByHashTag(String tag) {
+    public ArrayList<PostContext> searchByHashTag(String tag) {
+        try {
+            String searchSql = "SELECT * FROM hashtag JOIN posts ON hashtag.post_id = posts.post_id WHERE tag = ?";
+            PreparedStatement searchPstmt = con.prepareStatement(searchSql);
+            searchPstmt.setString(1, tag); // �˻��ϰ��� �ϴ� �±�
+
+            ResultSet rs = searchPstmt.executeQuery();
+            ArrayList<PostContext> postList = new ArrayList<PostContext>();
+
+            while (rs.next()) {
+                YourProfile yourProfile = new YourProfile(con, rs.getString("user_id_writer"));
+                String nickname = yourProfile.getUserInfo().nickname;
+
+                PostContext post = new PostContext(rs.getInt("post_id"), nickname, rs.getString("user_id_writer"),
+                        rs.getString("post_image"), rs.getString("content"), rs.getTimestamp("update_date"),
+                        rs.getTimestamp("registration_date"), rs.getInt("num_of_likes"));
+                postList.add(post);
+            }
+
+            return postList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+
+        }
+    }
+
+    public void searchByHashTagPrint(String tag) {
         try {
             String searchSql = "SELECT * FROM hashtag JOIN posts ON hashtag.post_id = posts.post_id WHERE tag = ?";
             PreparedStatement searchPstmt = con.prepareStatement(searchSql);

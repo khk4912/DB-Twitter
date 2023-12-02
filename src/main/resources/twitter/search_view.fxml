@@ -34,7 +34,7 @@
       <Accordion />
       <AnchorPane layoutX="15.0" layoutY="57.0" prefHeight="14.0" prefWidth="668.0">
          <children>
-            <TextField layoutX="74.0" layoutY="17.0" prefHeight="28.0" prefWidth="555.0" promptText="인물이나 해시태그 또는 키워드를 검색해보세요." AnchorPane.bottomAnchor="118.0" AnchorPane.topAnchor="17.0" />
+            <TextField fx:id="searchInput" layoutX="74.0" layoutY="17.0" prefHeight="28.0" prefWidth="555.0" promptText="인물이나 해시태그 또는 키워드를 검색해보세요." AnchorPane.bottomAnchor="118.0" AnchorPane.topAnchor="17.0" />
             <Button fx:id="searchButton" layoutX="657.0" layoutY="16.0" mnemonicParsing="false" />
          </children>
       </AnchorPane>
