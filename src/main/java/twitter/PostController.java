@@ -9,7 +9,7 @@ import javafx.fxml.FXMLLoader;
 
 import javafx.scene.text.Text;
 import twitter.utils.DateCalculator;
-import twitter.utils.UserInfo;
+
 import javafx.scene.control.Label;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.image.ImageView;
@@ -19,6 +19,8 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+
+import twitter.DetailedPostController;
 
 public class PostController {
 
@@ -131,6 +133,11 @@ public class PostController {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("detailed_post_view.fxml"));
             Parent root = (Parent) fxmlLoader.load();
+
+            DetailedPostController detailedPostViewController = fxmlLoader.getController();
+            detailedPostViewController.initPost(usernameLabel.getText(), handleLabel.getText(), contentText.getText(),
+                    Integer.parseInt(likeCount.getText()), Integer.parseInt(retweetCount.getText()),
+                    Integer.parseInt(commentCount.getText()), new Date());
 
             Stage stage = new Stage();
             stage.setTitle("글 보기");
