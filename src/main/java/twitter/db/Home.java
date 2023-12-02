@@ -27,13 +27,7 @@ public class Home { // User&FollowingPostViewer=timeline
 
         ArrayList<PostContext> results = new ArrayList<>();
 
-        String sql = "SELECT posts.*, user.nickname " +
-                "FROM posts " +
-                "JOIN following ON posts.user_id_writer = following.following_id " +
-                "JOIN user ON posts.user_id_writer = user.user_id " +
-                "WHERE following.follow_id = ? OR posts.user_id_writer = ? " +
-                "ORDER BY posts.update_date DESC";
-
+        String sql = "select * from posts where user_id_writer = ? or user_id_writer in  (select following_id from following where follow_id = ?) order by update_date desc";
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
 
             pstmt.setString(1, user_id);
