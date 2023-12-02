@@ -35,21 +35,12 @@ public class Home { // User&FollowingPostViewer=timeline
 
             try (ResultSet rs = pstmt.executeQuery()) {
                 while (rs.next()) {
+                    String nickname = new YourProfile(con, rs.getString("user_id_writer")).getUserInfo().nickname;
 
-                    int postID = rs.getInt(1);
-                    String writerID = rs.getString(2);
-
-                    String nickname = new YourProfile(con, writerID).getUserInfo().nickname;
-
-                    String image = null; // TODO: Image?
-                    String content = rs.getString(4);
-                    Date updateDate = rs.getDate(5);
-                    Date registrationDate = rs.getDate(6);
-
-                    int likeCnt = rs.getInt(7);
-
-                    results.add(new PostContext(postID, nickname, writerID, image, content, updateDate,
-                            registrationDate, likeCnt));
+                    PostContext post = new PostContext(rs.getInt("post_id"), nickname, rs.getString("user_id_writer"),
+                            rs.getString("post_image"), rs.getString("content"), rs.getTimestamp("update_date"),
+                            rs.getTimestamp("registration_date"), rs.getInt("num_of_likes"));
+                    results.add(post);
                 }
             }
 
