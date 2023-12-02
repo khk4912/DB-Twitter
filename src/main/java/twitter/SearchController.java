@@ -35,12 +35,13 @@ public class SearchController extends PostViewController {
         ArrayList<PostContext> postList;
         String keyword = searchInput.getText();
 
+        postGridPane.getChildren().clear();
+
         if (keyword.equals("") || keyword == null) {
             return;
         }
 
         if (keyword.charAt(0) == '@') {
-            keyword = keyword.substring(1);
             postList = search.searchByID(keyword.substring(1));
 
         } else {

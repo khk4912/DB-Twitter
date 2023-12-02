@@ -15,7 +15,7 @@ import twitter.utils.PostContext;
 public class PostViewController {
 
     @FXML
-    private GridPane postGridPane;
+    protected GridPane postGridPane;
 
     @FXML
     private GridPane emptyNotifyGridPane;

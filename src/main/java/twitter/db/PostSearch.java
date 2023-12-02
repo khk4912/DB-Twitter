@@ -69,7 +69,7 @@ public class PostSearch {
 
     public ArrayList<PostContext> searchByID(String UserID) {
         ArrayList<PostContext> postList = new ArrayList<PostContext>();
-
+        System.out.println(UserID);
         try {
             String sql = "SELECT * FROM posts WHERE user_id_writer = ? ORDER BY update_date DESC";
             PreparedStatement pstmt = con.prepareStatement(sql);
