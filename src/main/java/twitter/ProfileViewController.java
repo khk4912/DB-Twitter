@@ -3,6 +3,7 @@ package twitter;
 import java.util.ArrayList;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
@@ -24,6 +25,12 @@ public class ProfileViewController extends PostViewController {
     @FXML
     GridPane emptyNotifyGridPane;
 
+    @FXML
+    Button followButton;
+
+    @FXML
+    Button editProfileButton;
+
     public void initProfile(String username, String handle, String bio) {
         userNameLabel.setText(username);
         userHandleLabel.setText('@' + handle);
@@ -32,20 +39,21 @@ public class ProfileViewController extends PostViewController {
             bio = "자기소개가 설정되지 않았습니다.";
         }
         this.bio.setText(bio);
-    }
 
-    public void initialize() {
-        ArrayList<PostContext> posts = postSearch.searchByID(App.loginContext.user.userID);
-
-        emptyNotifyGridPane.setVisible(true);
+        ArrayList<PostContext> posts = postSearch.searchByID(handle);
 
         if (posts.size() == 0) {
-            emptyNotifyGridPane.setVisible(true);
+            System.out.println("No Posts!");
+            showEmptyNotify();
         }
 
         for (PostContext post : posts) {
             addPost(post);
         }
+
+    }
+
+    public void initialize() {
 
     }
 }
