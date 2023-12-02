@@ -27,6 +27,6 @@ public class WritePostController {
 
         uploadPost(App.loginContext.user.userID, content);
         TwitterAlert.info("트윗 업로드 완료", "트윗이 업로드되었습니다.");
-
+        contentTextArea.setText("");
     }
 }

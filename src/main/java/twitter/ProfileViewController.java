@@ -9,9 +9,12 @@ import javafx.scene.text.Text;
 
 import twitter.db.PostSearch;
 import twitter.utils.PostContext;
+import twitter.db.Follow;
 
 public class ProfileViewController extends PostViewController {
     private PostSearch postSearch = new PostSearch(App.DB.getConnection());
+    Follow follow = new Follow(App.DB.getConnection());
+    private boolean isfollowing = false;
 
     @FXML
     Text userNameLabel;
@@ -51,9 +54,39 @@ public class ProfileViewController extends PostViewController {
             addPost(post);
         }
 
+        if (App.loginContext.user.userID.equals(handle)) {
+            followButton.setVisible(false);
+            editProfileButton.setVisible(true);
+        } else {
+            followButton.setVisible(true);
+            editProfileButton.setVisible(false);
+        }
+        isfollowing = follow.checkFollowing(App.loginContext.user.userID, handle);
+
+        if (isfollowing) {
+            followButton.setText("언팔로우");
+        } else {
+            followButton.setText("팔로우");
+        }
     }
 
     public void initialize() {
-
+        followButton.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, (e) -> {
+            handleFollowButtonClick();
+        });
     }
+
+    public void handleFollowButtonClick() {
+        if (isfollowing) {
+            followButton.setText("팔로우");
+            follow.execute(App.loginContext.user.userID, userHandleLabel.getText().substring(1));
+            isfollowing = false;
+
+        } else {
+            followButton.setText("언팔로우");
+            follow.execute(App.loginContext.user.userID, userHandleLabel.getText().substring(1));
+            isfollowing = true;
+        }
+    }
+
 }

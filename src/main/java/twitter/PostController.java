@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 
 import javafx.scene.text.Text;
 import twitter.utils.DateCalculator;
+import twitter.utils.UserInfo;
 import javafx.scene.control.Label;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.image.ImageView;
@@ -20,6 +21,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class PostController {
+
+    boolean liked = false;
+    boolean retweeted = false;
 
     @FXML
     Label usernameLabel;
@@ -43,6 +47,9 @@ public class PostController {
     ImageView menuIcon;
 
     @FXML
+    ImageView heartImage;
+
+    @FXML
     ColumnConstraints userNameGridPane;
 
     @FXML
@@ -50,6 +57,25 @@ public class PostController {
 
     @FXML
     Label dateTextLabel;
+
+    public void initialize() {
+        usernameLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, (e) -> {
+            loadWriterProfileView();
+        });
+
+        handleLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, (e) -> {
+            loadWriterProfileView();
+        });
+
+        likeCount.addEventHandler(MouseEvent.MOUSE_CLICKED, (e) -> {
+            like();
+        });
+
+        heartImage.addEventHandler(MouseEvent.MOUSE_CLICKED, (e) -> {
+            like();
+        });
+
+    }
 
     public void initPost(String username, String handle, String contentText, int likeCnt, int retweetCnt,
             int replyCnt) {
@@ -118,6 +144,37 @@ public class PostController {
 
     @FXML
     private void loadWriterProfileView() {
-        // TODO
+        // Create new popup window
+        try {
+            String userIDString = handleLabel.getText().substring(1);
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("profile_view.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+
+            ProfileViewController profileViewController = fxmlLoader.getController();
+            profileViewController.initProfile(usernameLabel.getText(), userIDString, "자기소개가 설정되지 않았습니다.");
+
+            Stage stage = new Stage();
+            stage.setTitle("프로필 보기");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @FXML
+    private void like() {
+        if (liked) {
+            liked = false;
+            heartImage.setImage(new javafx.scene.image.Image(App.class.getResource("assets/like.png").toString()));
+            likeCount.setText(Integer.toString(Integer.parseInt(likeCount.getText()) - 1));
+        } else {
+            liked = true;
+            heartImage.setImage(new javafx.scene.image.Image(App.class.getResource("assets/liked.png").toString()));
+            likeCount.setText(Integer.toString(Integer.parseInt(likeCount.getText()) + 1));
+        }
     }
 }

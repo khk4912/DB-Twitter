@@ -49,6 +49,7 @@ public class MainViewController {
                     postViewController.addPost(post);
                 }
             }
+
             postScrollPane.setContent(postView);
 
         } catch (IOException e) {
@@ -68,7 +69,10 @@ public class MainViewController {
             PostViewController postViewController = fxmlLoader.getController();
             postViewController.initScrollPane(postScrollPane);
 
-            // postViewController.addPost("나", "@me", "북마크 테스트", 9999, 1, 8, new Date());
+            postViewController.addPost("나", "@me", "북마크 테스트", 9999, 1, 8, new Date());
+            postViewController.addRetweetPost("나", "@me", "돈까스", "너 ", "you", "점심 뭐먹지?", 0, 0, 0, new Date(),
+                    new Date());
+
             // postViewController.addPost("나", "@me", "북마크 테스트2", 1234132, 1, 8);
             // postViewController.addPost("나", "@me", "북마크 테스트3", 13, 1, 8);
             // postViewController.addPost("나", "@me", "북마크 테스트4", 13, 1, 8);
@@ -124,6 +128,8 @@ public class MainViewController {
 
             ProfileViewController profileViewController = fxmlLoader.getController();
             profileViewController.initScrollPane(postScrollPane);
+            profileViewController.initProfile(App.loginContext.user.nickname, App.loginContext.user.userID,
+                    App.loginContext.user.introduce);
 
             postScrollPane.setContent(profileView);
         } catch (IOException e) {

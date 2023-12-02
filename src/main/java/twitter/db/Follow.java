@@ -9,15 +9,32 @@ public class Follow {
         this.con = con;
     }
 
+    public boolean checkFollowing(String targetID, String searchID) {
+        try {
+            String sql = "SELECT * FROM following WHERE follow_id = ? AND following_id = ?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, targetID);
+            pstmt.setString(2, searchID);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public void execute(String followID, String followerID) {
         try {
-            String checkSql = "SELECT * FROM follower WHERE follow_id = ? AND follower_id = ?";
-            PreparedStatement checkPstmt = con.prepareStatement(checkSql);
-            checkPstmt.setString(1, followID); // �ȷο� �ϴ� ���
-            checkPstmt.setString(2, followerID); // �ȷο� �޴� ���
-            ResultSet rs = checkPstmt.executeQuery();
 
-            if (!rs.next()) {
+            if (checkFollowing(followID, followerID)) {
+                unfollow(followID, followerID);
+            } else {
                 String insertSql = "INSERT INTO follower VALUES (?, ?)";
                 PreparedStatement insertPstmt = con.prepareStatement(insertSql);
                 insertPstmt.setString(1, followID); // �ȷο� �ϴ� ���
@@ -31,8 +48,6 @@ public class Follow {
                 insertPstmt2.executeUpdate();
 
                 System.out.println(followID + " is now follow " + followerID);
-            } else {
-                unfollow(followID, followerID);
             }
 
         } catch (SQLException e) {
