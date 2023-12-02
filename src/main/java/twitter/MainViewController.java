@@ -41,6 +41,7 @@ public class MainViewController {
 
             PostViewController postViewController = fxmlLoader.getController();
             postViewController.initScrollPane(postScrollPane);
+            postViewController.addPost("나", "@me", "북마크 테스트", 0, 0, 1, new Date());
 
             if (postList.size() == 0) {
                 postViewController.showEmptyNotify();
@@ -69,9 +70,12 @@ public class MainViewController {
             PostViewController postViewController = fxmlLoader.getController();
             postViewController.initScrollPane(postScrollPane);
 
-            postViewController.addPost("나", "@me", "북마크 테스트", 9999, 1, 8, new Date());
-            postViewController.addRetweetPost("나", "@me", "돈까스", "너 ", "you", "점심 뭐먹지?", 0, 0, 0, new Date(),
-                    new Date());
+            postViewController.addPost("나", "@me", "북마크 테스트", 0, 0, 1, new Date());
+
+            // postViewController.addPost("나", "@me", "북마크 테스트", 9999, 1, 8, new Date());
+            // postViewController.addRetweetPost("나", "@me", "돈까스", "너 ", "you", "점심 뭐먹지?",
+            // 0, 0, 0, new Date(),
+            // new Date());
 
             // postViewController.addPost("나", "@me", "북마크 테스트2", 1234132, 1, 8);
             // postViewController.addPost("나", "@me", "북마크 테스트3", 13, 1, 8);
