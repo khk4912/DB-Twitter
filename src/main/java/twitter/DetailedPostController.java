@@ -35,6 +35,7 @@ public class DetailedPostController extends PostController {
             AnchorPane post = fxmlLoader.load();
             PostController postController = fxmlLoader.getController();
 
+            postController.setParentGridPane(postGridPane);
             postController.initPost(username, handle, contentText, likeCnt, retweetCnt, replyCnt, updateDate);
             postGridPane.addRow(postGridPane.getRowCount(), post);
 

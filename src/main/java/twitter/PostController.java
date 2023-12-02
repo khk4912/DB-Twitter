@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.text.Text;
 import twitter.utils.DateCalculator;
 
+import javafx.scene.layout.GridPane;
 import javafx.scene.control.Label;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.image.ImageView;
@@ -24,8 +25,12 @@ import twitter.DetailedPostController;
 
 public class PostController {
 
+    GridPane postGridPane;
+
     boolean liked = false;
     boolean retweeted = false;
+
+    Date updateDate;
 
     @FXML
     Label usernameLabel;
@@ -77,6 +82,14 @@ public class PostController {
             like();
         });
 
+        retweetCount.addEventHandler(MouseEvent.MOUSE_CLICKED, (e) -> {
+            showRetweetPopup();
+        });
+
+    }
+
+    public void setParentGridPane(GridPane postGridPane) {
+        this.postGridPane = postGridPane;
     }
 
     public void initPost(String username, String handle, String contentText, int likeCnt, int retweetCnt,
@@ -87,6 +100,8 @@ public class PostController {
 
     public void initPost(String username, String handle, String contentText, int likeCnt, int retweetCnt,
             int replyCnt, Date updateDate) {
+
+        this.updateDate = updateDate;
 
         this.usernameLabel.setText(username);
         this.handleLabel.setText(handle);
@@ -183,5 +198,30 @@ public class PostController {
             heartImage.setImage(new javafx.scene.image.Image(App.class.getResource("assets/liked.png").toString()));
             likeCount.setText(Integer.toString(Integer.parseInt(likeCount.getText()) + 1));
         }
+    }
+
+    private void showRetweetPopup() {
+        try {
+            GridPane targetGridPane = this.postGridPane;
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("retweet.fxml"));
+            Parent contextMenu = (Parent) fxmlLoader.load();
+            RetweetPopupController retweetPopupController = fxmlLoader.getController();
+            retweetPopupController.setTargetGridPane(targetGridPane);
+            retweetPopupController.setPostContext(
+                    new twitter.utils.PostContext(0, usernameLabel.getText(), handleLabel.getText(), null,
+                            contentText.getText(), updateDate, updateDate, Integer.parseInt(likeCount.getText())));
+
+            Stage stage = new Stage();
+            stage.setTitle("리트윗");
+            stage.setScene(new Scene(contextMenu));
+            stage.show();
+
+        } catch (IOException e) {
+            System.out.println("Error loading retweet_popup.fxml");
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+
     }
 }
