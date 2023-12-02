@@ -20,15 +20,15 @@
          </image>
       </ImageView>
       <GridPane fx:id="userInfoGridPane" layoutX="116.0" layoutY="17.0" maxHeight="-Infinity" prefHeight="15.0">
-        <columnConstraints>
-          <ColumnConstraints fx:id="userNameGridPane" fillWidth="false" hgrow="NEVER" />
-          <ColumnConstraints fx:id="userHandleGridPane" fillWidth="false" hgrow="NEVER" />
+         <columnConstraints>
+            <ColumnConstraints fx:id="userNameGridPane" fillWidth="false" hgrow="NEVER" />
+            <ColumnConstraints fx:id="userHandleGridPane" fillWidth="false" hgrow="NEVER" />
             <ColumnConstraints fillWidth="false" hgrow="NEVER" minWidth="10.0" />
             <ColumnConstraints fillWidth="false" hgrow="NEVER" minWidth="10.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
          <children>
             <Label fx:id="usernameLabel" text="username">
                <font>
@@ -160,20 +160,20 @@
                </padding>
             </AnchorPane>
             <GridPane prefHeight="30.0" GridPane.rowIndex="3">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="80.0" />
+               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="80.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="80.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="80.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="80.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
                <children>
-                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="heartImage" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@assets/like.png" />
                      </image>
