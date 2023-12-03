@@ -3,10 +3,14 @@ package twitter;
 import java.util.ArrayList;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
-
+import javafx.stage.Stage;
 import twitter.db.PostSearch;
 import twitter.utils.PostContext;
 import twitter.db.Follow;
@@ -34,9 +38,18 @@ public class ProfileViewController extends PostViewController {
     @FXML
     Button editProfileButton;
 
+    @FXML
+    Label followCnt;
+
+    @FXML
+    Label followerCnt;
+
     public void initProfile(String username, String handle, String bio) {
         userNameLabel.setText(username);
         userHandleLabel.setText('@' + handle);
+
+        followCnt.setText(Integer.toString(follow.getFollowingCountOf(handle)));
+        followerCnt.setText(Integer.toString(follow.getFollowerCountOf(handle)));
 
         if (bio == null || bio.equals("null")) {
             bio = "자기소개가 설정되지 않았습니다.";
@@ -74,6 +87,54 @@ public class ProfileViewController extends PostViewController {
         followButton.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, (e) -> {
             handleFollowButtonClick();
         });
+
+        followCnt.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, (e) -> {
+            handleFollowingCntClick();
+        });
+
+        followerCnt.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, (e) -> {
+            handleFollowerCntClick();
+        });
+    }
+
+    public void handleFollowingCntClick() {
+        // new popup screen
+        try {
+            String ID = userHandleLabel.getText().substring(1);
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("followlist_view.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+
+            FollowListController followListController = fxmlLoader.getController();
+            followListController.init(false, ID);
+
+            Stage stage = new Stage();
+            stage.setTitle("팔로잉 리스트");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void handleFollowerCntClick() {
+        // new popup screen
+        try {
+            String ID = userHandleLabel.getText().substring(1);
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("followlist_view.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+
+            FollowListController followListController = fxmlLoader.getController();
+            followListController.init(true, ID);
+
+            Stage stage = new Stage();
+            stage.setTitle("팔로워 리스트");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void handleFollowButtonClick() {

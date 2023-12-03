@@ -32,6 +32,8 @@ public class FollowListController {
             return;
         }
 
+        nameGridPane.getChildren().clear();
+
         for (String x : list) {
             Label label = new Label(x);
             nameGridPane.add(label, 0, nameGridPane.getRowCount());

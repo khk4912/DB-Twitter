@@ -17,9 +17,9 @@
                   <Font name="Pretendard ExtraBold" size="16.0" />
                </font>
             </Text>
-            <GridPane layoutX="52.0" layoutY="107.0" prefHeight="29.0" prefWidth="100.0">
+            <GridPane fx:id="nameGridPane" layoutX="52.0" layoutY="107.0" prefHeight="29.0" prefWidth="100.0">
               <columnConstraints>
-                <ColumnConstraints fx:id="nameGridPane" hgrow="SOMETIMES" />
+                <ColumnConstraints hgrow="SOMETIMES" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />

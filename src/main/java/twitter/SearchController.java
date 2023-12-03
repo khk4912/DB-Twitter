@@ -25,6 +25,7 @@ public class SearchController extends PostViewController {
     public void initialize() {
         blockImage.setFitWidth(15);
         blockImage.setFitHeight(15);
+
         searchButton.setGraphic(blockImage);
         searchButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (e) -> {
             search();
