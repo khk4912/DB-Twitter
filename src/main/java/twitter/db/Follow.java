@@ -9,6 +9,44 @@ public class Follow {
         this.con = con;
     }
 
+    public int getFollowerCountOf(String targetID) {
+        try {
+            String sql = "SELECT COUNT(*) FROM follower WHERE follow_id = ?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, targetID);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt(1);
+            } else {
+                return 0;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public int getFollowingCountOf(String targetID) {
+        try {
+            String sql = "SELECT COUNT(*) FROM following WHERE follow_id = ?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, targetID);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt(1);
+            } else {
+                return 0;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
     public boolean checkFollowing(String targetID, String searchID) {
         try {
             String sql = "SELECT * FROM following WHERE follow_id = ? AND following_id = ?";
