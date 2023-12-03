@@ -1,6 +1,7 @@
 package twitter.db;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class Follow {
     private Connection con;
@@ -44,6 +45,44 @@ public class Follow {
         } catch (SQLException e) {
             e.printStackTrace();
             return 0;
+        }
+    }
+
+    public ArrayList<String> getFollowListOf(String targetID) {
+        try {
+            String sql = "SELECT follower_id FROM follower WHERE follow_id = ?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, targetID);
+            ResultSet rs = pstmt.executeQuery();
+
+            ArrayList<String> followList = new ArrayList<String>();
+            while (rs.next()) {
+                followList.add(rs.getString(1));
+            }
+            return followList;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public ArrayList<String> getFollowingListOf(String targetID) {
+        try {
+            String sql = "SELECT following_id FROM following WHERE follow_id = ?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, targetID);
+            ResultSet rs = pstmt.executeQuery();
+
+            ArrayList<String> followingList = new ArrayList<String>();
+            while (rs.next()) {
+                followingList.add(rs.getString(1));
+            }
+            return followingList;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 
